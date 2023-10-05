@@ -28,3 +28,15 @@ A webshop for selling products which aren't widely available.
   - Contentful usage
   - Datavisualization (graphs) library usage
   - Hotjar for website feedback
+
+## Product iedeas:
+- Snoep
+- Bier
+- Wiet
+- Coke
+- Meth
+- MDMA
+- 2CB
+- Foto's meester Bart
+- Vals geld
+- Wapens
