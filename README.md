@@ -9,7 +9,7 @@ A webshop for selling products which aren't widely available.
   - Webshop page
   - Basket page
   - Account page
-  - Form page
+  - Contact page
 
 - Planned style:
   - CSS animations
@@ -29,7 +29,7 @@ A webshop for selling products which aren't widely available.
   - Datavisualization (graphs) library usage
   - Hotjar for website feedback
 
-## Product iedeas:
+## Product ideas:
 - Snoep
 - Bier
 - Wiet
