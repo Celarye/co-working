@@ -1,0 +1,9 @@
+.card img {
+    height: 12rem;
+    width: auto;
+}
+
+.card {
+    display: inline-block;
+    
+}
