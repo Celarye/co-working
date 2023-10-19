@@ -1,7 +1,7 @@
 # co-working
 Web development co-working project.
 
-An Ebay like webshop for selling food which isn't widely available
+An Ebay like webshop for selling food which isn't widely available.
 
 ## Website plan:
 - Planned pages:
