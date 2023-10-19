@@ -1,0 +1,65 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.header-container {
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 0 auto;
+}
+
+body {
+	margin: 0;
+	font-family: 'Montserrat';
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #eee;
+	gap: 1rem;
+	background: #000;
+}
+
+nav a:first-child {
+	padding: 0 1rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+nav a:first-child img {
+	max-height: 4rem;
+	width: auto;
+	height: auto;
+}
+
+nav ul {
+	display: flex;
+	align-items: center;
+
+	list-style: none;
+	gap: 0.5rem;
+}
+
+nav a {
+	text-decoration: none;
+	color: inherit;
+}
+
+nav button {
+	border: 0;
+	background: 0;
+	font-style: inherit;
+	font-size: inherit;
+	color: inherit;
+}
+
+.main-container {
+	max-width: 80rem;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
