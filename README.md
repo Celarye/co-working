@@ -1,7 +1,7 @@
 # co-working
 Web development co-working project.
 
-A webshop for selling products which aren't widely available.
+An Ebay like webshop for selling food which isn't widely available
 
 ## Website plan:
 - Planned pages:
@@ -10,6 +10,7 @@ A webshop for selling products which aren't widely available.
   - Basket page
   - Account page
   - Contact page
+  - About Us page
 
 - Planned style:
   - CSS animations
@@ -28,15 +29,3 @@ A webshop for selling products which aren't widely available.
   - Contentful usage
   - Datavisualization (graphs) library usage
   - Hotjar for website feedback
-
-## Product ideas:
-- Snoep
-- Bier
-- Wiet
-- Coke
-- Meth
-- MDMA
-- 2CB
-- Foto's meester Bart
-- Vals geld
-- Wapens
