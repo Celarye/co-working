@@ -1,31 +1,36 @@
 # co-working
+
 Web development co-working project.
 
 A webshop for selling food which isn't widely available.
 
-## Website plan:
-- Planned pages:
-  - Homepage
-  - Webshop page
-  - Basket page
-  - Account page
-  - Contact page
-  - About Us page
+## Website plan
 
-- Planned style:
-  - CSS animations
-  - Usage of an SVG and manipulating it
-  - Responive
-  - Mobile support
+-   Planned pages:
 
-- Planned features:
-  - Google maps
-  - Google analytics
-  - Database with login support
-  - Admin user rights for customization of the database trough the website itself
-  - Cookies
- 
-- Possible features:
-  - Contentful usage
-  - Datavisualization (graphs) library usage
-  - Hotjar for website feedback
+    -   Homepage
+    -   Webshop page
+    -   Basket page
+    -   Account page
+    -   Contact page
+    -   About Us page
+
+-   Planned style:
+
+    -   CSS animations
+    -   Usage of an SVG and manipulating it
+    -   Responive
+    -   Mobile support
+
+-   Planned features:
+
+    -   Google maps
+    -   Google analytics
+    -   Database with login support
+    -   Admin user rights for customization of the database trough the website itself
+    -   Cookies
+
+-   Possible features:
+    -   Contentful usage
+    -   Datavisualization (graphs) library usage
+    -   Hotjar for website feedback

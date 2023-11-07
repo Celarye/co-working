@@ -1,0 +1,2 @@
+# Ignore the local mysql database
+src/mysql
