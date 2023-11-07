@@ -15,13 +15,13 @@
 		/>
 		<link rel="stylesheet" href="../styles.css" />
 		<link rel="stylesheet" href="styles.css" />
-		<title>Accidental Founds | Account</title>
+		<title>Accidental Founds | Sign In</title>
 	</head>
 	<body>
 		<header>
 			<nav>
-				<a href="../"
-					><img src="../includes/logo.png" alt="Website logo" />
+				<a href="../../"
+					><img src="../../includes/logo.png" alt="Website logo" />
 					Accidental&nbsp;Founds</a
 				>
 				<section>
@@ -36,7 +36,7 @@
 								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
 							/>
 						</svg>
-						<form action="../webshop">
+						<form action="../../webshop">
 							<input
 								type="search"
 								name="search"
@@ -49,11 +49,11 @@
 				<section>
 					<ul>
 						<li>
-							<a href="../webshop">Webshop</a>
+							<a href="../../webshop">Webshop</a>
 						</li>
-						<li><a href="../contact">Contact</a></li>
+						<li><a href="../../contact">Contact</a></li>
 						<li>
-							<a title="Account" href="./"
+							<a title="Account" href="../"
 								><svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="28"
@@ -71,7 +71,7 @@
 							></a>
 						</li>
 						<li>
-							<a title="Winkelmandje" href="../basket"
+							<a title="Winkelmandje" href="../../basket"
 								><svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="28"
@@ -90,65 +90,19 @@
 		</header>
 		<div class="container">
 			<main>
-				<div class="container">
-					<section class="no-account">
-						<h1>Account Aanmaken</h1>
-						<button>Maak een Account</button>
-					</section>
-					<section class="account-info">
-						<h1>Account Info</h1>
-						<h2>Naam</h2>
-						<h3>Voornaam</h3>
-						<input
-							type="text"
-							name="first-name"
-							id="first-name"
-							placeholder="Voornaam"
-						/>
-						<h3>Achternaam</h3>
-						<input
-							type="text"
-							name="surname"
-							id="surname"
-							placeholder="Achternaam"
-						/>
-						<h2>Geslacht</h2>
-						<select title="gender" name="gender" id="gender">
-							<option value="male">Man</option>
-							<option value="female">Vrouw</option>
-							<option value="dont-specify">
-								Niet specificeren
-							</option>
-							<option value="other">Ander</option>
-						</select>
-						<input
-							title="gender-other"
-							type="text"
-							name="gender-other"
-							id="gender-other"
-							placeholder="Ander Geslacht"
-						/>
-						<h2>E-mail</h2>
-						<input
-							type="text"
-							name="email"
-							id="email"
-							placeholder="E-mail"
-							disabled
-						/>
-						<h2>Wachtwoord</h2>
-						<button id="password-change">
-							Verander Wachtwoord
-						</button>
-						<h2>Account verwijderen</h2>
-						<button>Verwijder Account</button>
-					</section>
-				</div>
+				<h1>Sign In</h1>
+				<form action="">
+					<label for="email">E-mail</label>
+					<input type="text" name="email" id="email" />
+					<label for="password">Wachtwoord</label>
+					<input type="text" name="password" id="password" />
+				</form>
 			</main>
 			<footer>
 				<p>
 					Copyright &copy; 2023 All rights reserved. Aiko De Prez,
 					Anureet Kaur, Jesse-Jadon Latré and Eduard Smet
+					<a href="../../aboutus">About Us</a>
 				</p>
 			</footer>
 		</div>

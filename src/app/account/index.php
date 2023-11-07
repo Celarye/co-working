@@ -1,4 +1,37 @@
-<!DOCTYPE html>
+<?php
+
+// Show all errors
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+
+// Database connection-settings
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'website');
+
+date_default_timezone_set('Europe/Brussels');
+
+// Console log helper function
+function debug_to_console($data) {
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+
+    echo "<script>console.log('$output');</script>";
+}
+
+// Connect with the database
+try {
+    $db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	debug_to_console('Successfully connected to the database!');
+} catch (PDOException $e) {
+    debug_to_console('An error occurred while trying to connect to the database: ' . $e->getMessage());
+    exit;
+}
+
+?><!DOCTYPE html>
 <html lang="nl">
 	<head>
 		<meta charset="UTF-8" />
@@ -15,7 +48,7 @@
 		/>
 		<link rel="stylesheet" href="../styles.css" />
 		<link rel="stylesheet" href="styles.css" />
-		<title>Accidental Founds | Contact</title>
+		<title>Accidental Founds | Account</title>
 	</head>
 	<body>
 		<header>
@@ -51,9 +84,9 @@
 						<li>
 							<a href="../webshop">Webshop</a>
 						</li>
-						<li><a href="./">Contact</a></li>
+						<li><a href="../contact">Contact</a></li>
 						<li>
-							<a title="Account" href="../account"
+							<a title="Account" href="./"
 								><svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="28"
@@ -89,7 +122,34 @@
 			</nav>
 		</header>
 		<div class="container">
-			<main></main>
+			<main>
+				<section class="no-account">
+					<h1>Je Bent Niet Ingelogged</h1>
+					<h2>Maak een Account</h2>
+					<button>Maak een Account</button>
+					<h3>Log In Tot Je Account</h3>
+					<button>Log In Tot Je Account</button>
+				</section>
+				<section class="account-info">
+					<h1>Account Info</h1>
+					<form action="">
+						<label for="email">E-mail</label>
+						<input type="text" name="email" id="email" disabled />
+						<h2>Wachtwoord</h2>
+						<label for="new-password">Verander Wachtwoord</label>
+						<input
+							type="text"
+							name="new-password"
+							id="new-password"
+						/>
+						<button type="submit">Sla op</button>
+					</form>
+					<form action="">
+						<h2>Account verwijderen</h2>
+						<button type="button">Verwijder Account</button>
+					</form>
+				</section>
+			</main>
 			<footer>
 				<p>
 					Copyright &copy; 2023 All rights reserved. Aiko De Prez,
