@@ -1,0 +1,12 @@
+name: co-working
+
+services:
+  website:
+    container_name: website
+    image: mattrayner/lamp:0.8.0-1804-php8
+    ports:
+      - "80:80"
+    volumes:
+     - ../src/app:/app
+     - ../src/mysql:/var/lib/mysql
+    restart: unless-stopped

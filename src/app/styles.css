@@ -19,7 +19,6 @@ body {
 
 nav {
 	display: flex;
-	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
 	color: #eee;
@@ -31,7 +30,6 @@ nav {
 nav > a {
 	display: flex;
 	align-items: center;
-	justify-content: center;
 	gap: 1rem;
 	font-size: 1.25rem;
 	font-weight: bold;
@@ -44,24 +42,35 @@ nav > a img {
 }
 
 nav section:nth-child(2) {
-	width: 20rem;
+	width: 25rem;
+	padding: 0 2rem;
 }
 
 nav .quick-search {
 	display: flex;
+	align-items: center;
 	gap: 1rem;
 	color: #000;
 	background: #ffffff;
 	border: #232323 solid 1px;
 	border-radius: 0.5rem;
-	padding: 0.5rem 1rem;
+	padding: 0 0 0 1rem;
+}
+
+nav .quick-search svg {
+	min-width: 16px;
+}
+
+nav form {
+	width: 100%;
 }
 
 nav input {
 	background: inherit;
 	border: 0;
-	padding: 0;
+	padding: 0.5rem 1rem 0.5rem 0;
 	color: inherit;
+	width: 100%;
 }
 
 nav textarea:focus,
@@ -83,12 +92,16 @@ nav a {
 	color: inherit;
 }
 
-@media only screen and (max-width: 967px) {
+@media only screen and (max-width: 850px) {
 	nav {
 		flex-direction: column;
 		justify-content: center;
 		padding: 1rem 0;
 		gap: 1.5rem;
+	}
+	nav section:nth-child(2) {
+		padding: 0 0.5rem;
+		width: 17rem;
 	}
 }
 
