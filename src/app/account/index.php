@@ -126,9 +126,9 @@ try {
 				<section class="no-account">
 					<h1>Je Bent Niet Ingelogged</h1>
 					<h2>Maak een Account</h2>
-					<button>Maak een Account</button>
-					<h3>Log In Tot Je Account</h3>
-					<button>Log In Tot Je Account</button>
+					<a href="./signup">Maak een Account</a>
+					<h2>Log In Tot Je Account</h3>
+					<a href="./signup">Log In Tot Je Account</a>
 				</section>
 				<section class="account-info">
 					<h1>Account Info</h1>
