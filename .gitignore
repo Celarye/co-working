@@ -1,0 +1,5 @@
+# Ignore the local mysql database
+src/mysql/*
+
+# But track the website.sql file
+!website.sql
