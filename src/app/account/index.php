@@ -13,11 +13,7 @@ define('DB_NAME', 'website');
 date_default_timezone_set('Europe/Brussels');
 
 // Console log helper function
-function debug_to_console($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-
+function debug_to_console($output) {
     echo "<script>console.log('$output');</script>";
 }
 
@@ -153,7 +149,7 @@ try {
 			<footer>
 				<p>
 					Copyright &copy; 2023 All rights reserved. Aiko De Prez,
-					Anureet Kaur, Jesse-Jadon Latré and Eduard Smet
+					Anureet Kaur, Jesse-Jadon Latré and Eduard Smet.
 					<a href="../aboutus">About Us</a>
 				</p>
 			</footer>

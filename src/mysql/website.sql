@@ -14,7 +14,7 @@ CREATE TABLE `product` (
   `name` text NOT NULL,
   `image` text NOT NULL,
   `description` text NOT NULL,
-  `price-in-euro-cents` int NOT NULL,
+  `price` float NOT NULL,
   PRIMARY KEY (`product-id`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci AUTO_INCREMENT = 1;
 
