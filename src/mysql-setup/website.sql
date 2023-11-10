@@ -4,15 +4,15 @@ USE website;
 
 CREATE TABLE `account` (
   `user-id` int(11) NOT NULL auto_increment,
-  `email` text NOT NULL,
-  `password-hash` text NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password-hash` varchar(255) NOT NULL,
   PRIMARY KEY  (`user-id`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci AUTO_INCREMENT = 1;
 
 CREATE TABLE `product` (
   `product-id` int(11) NOT NULL auto_increment,
-  `name` text NOT NULL,
-  `image` text NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `price` float NOT NULL,
   PRIMARY KEY (`product-id`)
@@ -26,3 +26,11 @@ CREATE TABLE `basket-item` (
   FOREIGN KEY (`user-id`) REFERENCES `account` (`user-id`),
   FOREIGN KEY (`product-id`) REFERENCES `product` (`product-id`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci;
+
+CREATE TABLE `message` (
+  `message-id` int(11) NOT NULL auto_increment,
+  `sender` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `added_on` datetime NOT NULL,
+  PRIMARY KEY  (`message-id`)
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci AUTO_INCREMENT = 1;
