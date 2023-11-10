@@ -20,20 +20,25 @@ window.onload = () => {
 	}
 };
 
-function languageSelect(id) {
+function languageSelect(id, depth, currentPage) {
 	document.cookie = `preferred-language=${id}` + ';path=/';
+	console.log('depth: ', depth);
+	console.log('currentPage: ', currentPage);
 	switch (document.cookie) {
 		case 'preferred-language=dutch':
-			window.location.replace('../');
+			window.location.replace(`${depth}/nl${currentPage}`);
+			break;
+		case 'preferred-language=french':
+			languageSelectorField.classList.add('language-selected');
+			languageSelectorTint.classList.add('language-selected');
 			break;
 		case 'preferred-language=english':
-			window.location.replace('../en');
+			window.location.replace(`${depth}/en${currentPage}`);
+
 			break;
 		default:
 			break;
 	}
-	languageSelectorField.classList.add('language-selected');
-	languageSelectorTint.classList.add('language-selected');
 }
 
 function languageReselect() {

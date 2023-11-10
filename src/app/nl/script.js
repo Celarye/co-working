@@ -4,16 +4,16 @@ let languageSelectorTint = document.querySelector('.language-selector-tint');
 window.onload = () => {
 	switch (document.cookie) {
 		case 'preferred-language=dutch':
-			languageSelectorField.classList.remove('language-selected');
-			languageSelectorTint.classList.remove('language-selected');
+			languageSelectorField.classList.add('language-selected');
+			languageSelectorTint.classList.add('language-selected');
 			break;
 		case 'preferred-language=french':
 			languageSelectorField.classList.remove('language-selected');
 			languageSelectorTint.classList.remove('language-selected');
 			break;
 		case 'preferred-language=english':
-			languageSelectorField.classList.add('language-selected');
-			languageSelectorTint.classList.add('language-selected');
+			languageSelectorField.classList.remove('language-selected');
+			languageSelectorTint.classList.remove('language-selected');
 			break;
 		default:
 			break;
@@ -22,16 +22,18 @@ window.onload = () => {
 
 function languageSelect(id, depth, currentPage) {
 	document.cookie = `preferred-language=${id}` + ';path=/';
+	console.log('depth: ', depth);
+	console.log('currentPage: ', currentPage);
 	switch (document.cookie) {
 		case 'preferred-language=dutch':
-			window.location.replace(`${depth}/nl${currentPage}`);
+			languageSelectorField.classList.add('language-selected');
+			languageSelectorTint.classList.add('language-selected');
 			break;
 		case 'preferred-language=french':
 			window.location.replace(`${depth}/fr${currentPage}`);
 			break;
 		case 'preferred-language=english':
-			languageSelectorField.classList.add('language-selected');
-			languageSelectorTint.classList.add('language-selected');
+			window.location.replace(`${depth}/en${currentPage}`);
 			break;
 		default:
 			break;

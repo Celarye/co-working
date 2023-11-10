@@ -47,10 +47,39 @@ try {
 		<title>Accidental Founds | Account</title>
 	</head>
 	<body>
-		<header>
+		<div class="language-selector-field">
+			<ul>
+				<li>
+					<button
+						id="dutch"
+						onclick="languageSelect(this.id, '../..', '/account')"
+					>
+						Nederlands
+					</button>
+				</li>
+				<li>
+					<button
+						id="french"
+						onclick="languageSelect(this.id, '../..', '/account')"
+					>
+						Français
+					</button>
+				</li>
+				<li>
+					<button
+						id="english"
+						onclick="languageSelect(this.id, '../..', '/account')"
+					>
+						English
+					</button>
+				</li>
+			</ul>
+		</div>
+		<div class="language-selector-tint"></div>
+		<div class="content"><header>
 			<nav>
 				<a href="../"
-					><img src="../includes/logo.png" alt="Website logo" />
+					><img src="../../includes/logo.png" alt="Website logo" />
 					Accidental&nbsp;Founds</a
 				>
 				<section>
@@ -146,13 +175,17 @@ try {
 					</form>
 				</section>
 			</main>
-			<footer>
+			<footer class="fixed-footer">
+				<button onclick="languageReselect()">
+					Verander je taal
+				</button>
 				<p>
 					Copyright &copy; 2023 All rights reserved. Aiko De Prez,
 					Anureet Kaur, Jesse-Jadon Latré and Eduard Smet.
-					<a href="../aboutus">Over Ons</a>
+					<a href="./aboutus">Over Ons</a>
 				</p>
 			</footer>
 		</div>
+		<script src="../script.js"></script>
 	</body>
 </html>
