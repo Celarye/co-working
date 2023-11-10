@@ -44,7 +44,8 @@ try {
 		/>
 		<link rel="stylesheet" href="../styles.css" />
 		<link rel="stylesheet" href="styles.css" />
-		<title>Accidental Founds | Account</title>
+		<link rel="icon" type="image/png" href="../../includes/favicon.png" />
+<title>Accidental Founds | Account</title>
 	</head>
 	<body>
 		<div class="language-selector-field">
