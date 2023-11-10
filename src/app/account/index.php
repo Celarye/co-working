@@ -150,7 +150,7 @@ try {
 				<p>
 					Copyright &copy; 2023 All rights reserved. Aiko De Prez,
 					Anureet Kaur, Jesse-Jadon Latré and Eduard Smet.
-					<a href="../aboutus">About Us</a>
+					<a href="../aboutus">Over Ons</a>
 				</p>
 			</footer>
 		</div>
