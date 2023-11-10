@@ -242,7 +242,7 @@ footer {
 	width: 100%;
 }
 
-@media only screen and (max-height: 100vh) {
+@media only screen and (height: 100vh) {
 	footer.fixed-footer {
 		position: absolute;
 		bottom: 0;
