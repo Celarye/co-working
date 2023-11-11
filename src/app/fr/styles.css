@@ -43,8 +43,8 @@ button {
 
 body .language-selector-field {
 	position: absolute;
-	top: 50%;
-	left: 50%;
+	top: 50vh;
+	left: 50vw;
 	transform: translatey(-50%) translatex(-50%);
 	z-index: 3;
 	display: flex;
@@ -85,16 +85,16 @@ body .language-selector-field li button {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-body .language-selector-field.language-selected {
-	display: none;
-}
-
 body .language-selector-tint {
 	position: absolute;
 	z-index: 2;
-	min-width: 100vw;
-	min-height: 100vh;
+	min-width: 100%;
+	min-height: 100%;
 	background: rgb(0, 0, 0, 0.25);
+}
+
+body .language-selector-field.language-selected {
+	display: none;
 }
 
 body .language-selector-tint.language-selected {
@@ -254,8 +254,8 @@ footer button {
 	background-color: var(--foreground-color);
 	color: var(--text-color);
 	padding: 1em 2em;
-	font-size: 0.875rem;
 	border: 0;
+	font-size: 0.875rem;
 	border-radius: 0.5em;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
