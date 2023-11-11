@@ -4,8 +4,6 @@ let languageSelectorTint = document.querySelector('.language-selector-tint');
 window.onload = () => {
 	switch (document.cookie) {
 		case 'preferred-language=dutch':
-			languageSelectorField.classList.add('language-selected');
-			languageSelectorTint.classList.add('language-selected');
 			break;
 		case 'preferred-language=french':
 			languageSelectorField.classList.remove('language-selected');
@@ -16,6 +14,8 @@ window.onload = () => {
 			languageSelectorTint.classList.remove('language-selected');
 			break;
 		default:
+			languageSelectorField.classList.remove('language-selected');
+			languageSelectorTint.classList.remove('language-selected');
 			break;
 	}
 };
