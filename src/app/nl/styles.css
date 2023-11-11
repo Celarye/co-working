@@ -112,7 +112,7 @@ nav {
 	gap: 2em;
 	background: var(--background-color-dark);
 	padding: 1em;
-	margin-bottom: 4em;
+	margin-bottom: 3em;
 }
 
 nav > a {
@@ -191,6 +191,7 @@ nav a {
 		flex-direction: column;
 		justify-content: center;
 		padding: 1em 0;
+		margin-bottom: 2em;
 		gap: 1em;
 	}
 	nav section:nth-child(2) {
@@ -203,8 +204,14 @@ main.homepage-main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 10vh;
+	gap: 12.5vh;
 	text-align: center;
+}
+
+@media only screen and (max-width: 429px) {
+	main.homepage-main {
+		gap: 7vh;
+	}
 }
 
 main .homepage-title-tagline {
@@ -224,12 +231,6 @@ main .webshop-link {
 	text-decoration: none;
 	border-radius: 0.5em;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-@media only screen and (max-width: 445px) {
-	main.homepage-main {
-		gap: 5vh;
-	}
 }
 
 footer {

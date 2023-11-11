@@ -21,7 +21,7 @@ CREATE TABLE `product` (
 CREATE TABLE `basket-item` (
   `user-id` int(11) NOT NULL,
   `product-id` int(11) NOT NULL,
-  `quantity` int NOT NULL,
+  `quantity` int(11) NOT NULL,
   PRIMARY KEY (`user-id`),
   FOREIGN KEY (`user-id`) REFERENCES `account` (`user-id`),
   FOREIGN KEY (`product-id`) REFERENCES `product` (`product-id`)
@@ -31,6 +31,6 @@ CREATE TABLE `message` (
   `message-id` int(11) NOT NULL auto_increment,
   `sender` varchar(255) NOT NULL,
   `message` text NOT NULL,
-  `added_on` datetime NOT NULL,
+  `created_on` datetime NOT NULL,
   PRIMARY KEY  (`message-id`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci AUTO_INCREMENT = 1;
