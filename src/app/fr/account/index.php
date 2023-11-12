@@ -1,30 +1,24 @@
 <?php
 
-// Show all errors
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-
-// Database connection-settings
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'website');
-
-date_default_timezone_set('Europe/Brussels');
-
-// Console log helper function
-function debug_to_console($output) {
-    echo "<script>console.log('$output');</script>";
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["signedIn"]) || $_SESSION["signedIn"] !== true){
+    header("location: ./signin");
+    exit;
 }
 
-// Connect with the database
-try {
-    $db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	debug_to_console('Successfully connected to the database!');
-} catch (PDOException $e) {
-    debug_to_console('An error occurred while trying to connect to the database: ' . $e->getMessage());
-    exit;
+function signOut() {
+	// Unset all of the session variables
+	session_unset();
+	
+	// Destroy the session
+	session_destroy();
+	
+	// Redirect to the sign in page
+	header("location: ./signin");
+	exit;
 }
 
 ?><!DOCTYPE html>
@@ -45,7 +39,7 @@ try {
 		<link rel="stylesheet" href="../styles.css" />
 		<link rel="stylesheet" href="styles.css" />
 		<link rel="icon" type="image/png" href="../../includes/favicon.png" />
-<title>Accidental Founds | Account</title>
+		<title>Accidental Founds | Account</title>
 	</head>
 	<body>
 		<div class="language-selector-field language-selected">
@@ -77,115 +71,125 @@ try {
 			</ul>
 		</div>
 		<div class="language-selector-tint language-selected"></div>
-		<div class="content"><header>
-			<nav>
-				<a href="../"
-					><img src="../../includes/logo.png" alt="Website logo" />
-					Accidental&nbsp;Founds</a
-				>
-				<section>
-					<div class="quick-search">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="16"
-							height="16"
-							fill="currentColor"
-						>
-							<path
-								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-							/>
-						</svg>
-						<form action="../webshop">
-							<input
-								type="search"
-								name="search"
-								id="search"
-								placeholder="Quick Search..."
-							/>
-						</form>
-					</div>
-				</section>
-				<section>
-					<ul>
-						<li>
-							<a href="../webshop">Webshop</a>
-						</li>
-						<li><a href="../contact">Contact</a></li>
-						<li>
-							<a title="Account" href="./"
-								><svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="28"
-									height="28"
-									fill="currentColor"
-									viewBox="0 0 16 16"
-								>
-									<path
-										d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
-									/>
-									<path
-										fill-rule="evenodd"
-										d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-									/></svg
-							></a>
-						</li>
-						<li>
-							<a title="Winkelmandje" href="../basket"
-								><svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="28"
-									height="28"
-									fill="currentColor"
-									viewBox="0 0 16 16"
-								>
-									<path
-										d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-									/></svg
-							></a>
-						</li>
-					</ul>
-				</section>
-			</nav>
-		</header>
-		<div class="container">
-			<main>
-				<section class="no-account">
-					<h1>Je Bent Niet Ingelogged</h1>
-					<h2>Maak een Account</h2>
-					<a href="./signup">Maak een Account</a>
-					<h2>Log In Tot Je Account</h3>
-					<a href="./signup">Log In Tot Je Account</a>
-				</section>
-				<section class="account-info">
-					<h1>Account Info</h1>
-					<form action="">
-						<label for="email">E-mail</label>
-						<input type="text" name="email" id="email" disabled />
-						<h2>Wachtwoord</h2>
-						<label for="new-password">Verander Wachtwoord</label>
-						<input
-							type="text"
-							name="new-password"
-							id="new-password"
+		<div class="content">
+			<header>
+				<nav>
+					<a href="../"
+						><img
+							src="../../includes/logo.png"
+							alt="Website logo"
 						/>
-						<button type="submit">Sla op</button>
+						Accidental&nbsp;Founds</a
+					>
+					<section>
+						<div class="quick-search">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								fill="currentColor"
+							>
+								<path
+									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+								/>
+							</svg>
+							<form action="../webshop">
+								<input
+									type="search"
+									name="search"
+									id="search"
+									placeholder="Quick Search..."
+								/>
+							</form>
+						</div>
+					</section>
+					<section>
+						<ul>
+							<li>
+								<a href="../webshop">Webshop</a>
+							</li>
+							<li><a href="../contact">Contact</a></li>
+							<li>
+								<a title="Account" href="./"
+									><svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="28"
+										height="28"
+										fill="currentColor"
+										viewBox="0 0 16 16"
+									>
+										<path
+											d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
+										/>
+										<path
+											fill-rule="evenodd"
+											d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+										/></svg
+								></a>
+							</li>
+							<li>
+								<a title="Winkelmandje" href="../basket"
+									><svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="28"
+										height="28"
+										fill="currentColor"
+										viewBox="0 0 16 16"
+									>
+										<path
+											d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+										/></svg
+								></a>
+							</li>
+						</ul>
+					</section>
+				</nav>
+			</header>
+			<div class="container">
+				<main>
+					<h1>Account Info</h1>
+					<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+						<section>
+							<label for="account-id">Account ID</label>
+							<input
+								type="text"
+								name="account-id"
+								id="account-id"
+								value="<?php echo htmlspecialchars($_SESSION["account-id"]); ?>"
+								disabled
+							/>
+						</section>
+						<section>
+							<label for="email">E-mail</label>
+							<input
+								type="text"
+								name="email"
+								id="email"
+								value="<?php echo htmlspecialchars($_SESSION["email"]); ?>"
+								disabled
+							/>
+						</section>
+						<section>
+							<label for="created-on">Account Creation Date</h2>
+							<input type="date" name="created-on" id="created-on" value="<?php echo htmlspecialchars($_SESSION["createdOn"]); ?>" disabled>
+						</section>
+						<p>Opmerking: accountinfo bewerken wordt momenteel niet ondersteund. Verwijder in plaats daarvan je huidige account en maak een nieuwe aan.</p>
 					</form>
-					<form action="">
-						<h2>Account verwijderen</h2>
-						<button type="button">Verwijder Account</button>
+					<form>
+						<input type="submit" id="sign-out" value="Uitloggen" onclick="<?php signOut(); ?>">
+						<input type="submit" id="account-deletion" value="Account Verwijderen">
 					</form>
-				</section>
-			</main>
-			<footer class="fixed-footer">
-				<button onclick="languageReselect()">
-					Verander je taal
-				</button>
-				<p>
-					Copyright &copy; 2023 All rights reserved. Aiko De Prez,
-					Anureet Kaur, Jesse-Jadon Latré and Eduard Smet.
-					<a href="./aboutus">Over Ons</a>
-				</p>
-			</footer>
+				</main>
+				<footer class="fixed-footer">
+					<button onclick="languageReselect()">
+						Verander je taal
+					</button>
+					<p>
+						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
+						<a href="./aboutus">Over Ons</a>
+					</p>
+				</footer>
+			</div>
 		</div>
 		<script src="../script.js"></script>
 	</body>

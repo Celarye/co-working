@@ -1,17 +1,23 @@
 let languageSelectorField = document.querySelector('.language-selector-field');
 let languageSelectorTint = document.querySelector('.language-selector-tint');
 
+function getCookie(key) {
+	const value = `; ${document.cookie}`;
+	const parts = value.split(`; ${key}=`);
+	if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 window.onload = () => {
-	switch (document.cookie) {
-		case 'preferred-language=dutch':
+	switch (getCookie('preferred-language')) {
+		case 'dutch':
 			languageSelectorField.classList.remove('language-selected');
 			languageSelectorTint.classList.remove('language-selected');
 			break;
-		case 'preferred-language=french':
+		case 'french':
 			languageSelectorField.classList.remove('language-selected');
 			languageSelectorTint.classList.remove('language-selected');
 			break;
-		case 'preferred-language=english':
+		case 'english':
 			break;
 		default:
 			languageSelectorField.classList.remove('language-selected');
@@ -22,14 +28,14 @@ window.onload = () => {
 
 function languageSelect(id, depth, currentPage) {
 	document.cookie = `preferred-language=${id}` + ';path=/';
-	switch (document.cookie) {
-		case 'preferred-language=dutch':
+	switch (getCookie('preferred-language')) {
+		case 'dutch':
 			window.location.replace(`${depth}/nl${currentPage}`);
 			break;
-		case 'preferred-language=french':
+		case 'french':
 			window.location.replace(`${depth}/fr${currentPage}`);
 			break;
-		case 'preferred-language=english':
+		case 'english':
 			languageSelectorField.classList.add('language-selected');
 			languageSelectorTint.classList.add('language-selected');
 			break;
@@ -40,7 +46,9 @@ function languageSelect(id, depth, currentPage) {
 
 function languageReselect() {
 	document.cookie =
-		document.cookie + ';path=/' + ';expires=Thu, 01 Jan 1970 00:00:01 GMT';
+		'preferred-language=' +
+		';path=/' +
+		';expires=Thu, 01 Jan 1970 00:00:01 GMT';
 	languageSelectorField.classList.remove('language-selected');
 	languageSelectorTint.classList.remove('language-selected');
 }
