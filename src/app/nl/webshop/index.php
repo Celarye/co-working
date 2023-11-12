@@ -84,7 +84,7 @@ $result = $db->query($sql);
 						English
 					</button>
 				</li>
-			</ul> 
+			</ul>
 		</div>
 		<div class="language-selector-tint"></div>
 		<div class="content">
@@ -140,7 +140,7 @@ $result = $db->query($sql);
 										<path
 											fill-rule="evenodd"
 											d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-										/></svg>
+										/></svg
 								></a>
 							</li>
 							<li>
@@ -154,7 +154,7 @@ $result = $db->query($sql);
 									>
 										<path
 											d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-										/></svg>
+										/></svg
 								></a>
 							</li>
 						</ul>
@@ -165,30 +165,26 @@ $result = $db->query($sql);
 				<main>
 					<section class="card-placement">
 					<?php
-
-
-       while ($row = $result->fetch(PDO::FETCH_ASSOC)){
-		$productId=$row['product-id']
-           
-        ?>
-    
-            <div class="card">
-          
-       
-                <a href="./webshop-items/?myid=<?php echo $productId ?>">
-                    <img src="<?php echo $row['image'] ?>"alt="<?php echo $row['name']?>">
-                    <h2><?php echo $row['name'] ?></h2>
-					<div class="position">
-                    <p>&euro; <?php echo $row['price']?></p>
-					<button class="info">Lees meer!</button></div>
-                </a>
-                </div>
-<?php
-            }
-                
-                ?>
-           
-						</section>
+					       while ($row = $result->fetch(PDO::FETCH_ASSOC)){
+							$productId=$row['product-id']
+					?>
+					    
+					        <div class="card">
+					          
+					       
+					                <a href="./webshop-items/?myid=<?php echo $productId ?>">
+					                	<img src="<?php echo $row['image'] ?>"alt="<?php echo $row['name']?>">
+					                	<h2><?php echo $row['name'] ?></h2>
+								<div class="position">
+					                    		<p>&euro; <?php echo $row['price']?></p>
+									<button class="info">Lees meer!</button>
+								</div>
+					                </a>
+					        </div>
+					<?php
+						}           
+					?>
+					</section>
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
