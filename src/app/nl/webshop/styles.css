@@ -5,3 +5,52 @@ main {
 	align-items: center;
 	justify-content: center;
 }
+
+.card {
+    position:inherit;
+    display: inline-flex;
+    border-radius: 1rem ;
+    box-shadow:  4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 5rem;
+    margin-right: 2rem;
+    margin-left: 3rem;
+    height: 25rem;
+    width: 20rem;
+}
+
+img {
+    width: 20rem;
+    height: 15rem;
+    border-radius: 1rem 1rem 0rem 0rem;
+    color: #fff;
+}
+
+footer {
+    margin-top: 10rem;
+}
+
+.card-placement {
+    margin-bottom: 10rem;
+}
+
+.card a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.info {
+    background-color: var(--foreground-color);
+    margin-left:10rem;
+    margin-top: 1rem; 
+    box-shadow:  4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #fff;
+    border-color: var(--foreground-color);
+    border-radius: 0.5rem;
+    height: 2rem;
+    width:6rem;
+}
+
+.position {
+    display: inline-flex;
+}
+

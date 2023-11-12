@@ -17,7 +17,6 @@ A webshop for selling food which isn't widely available.
 
 -   Planned style:
 
-    -   CSS animations
     -   Usage of an SVG and manipulating it
     -   Responive
     -   Mobile support
@@ -25,12 +24,5 @@ A webshop for selling food which isn't widely available.
 -   Planned features:
 
     -   Google maps
-    -   Google analytics
     -   Database with login support
-    -   Admin user rights for customization of the database trough the website itself
     -   Cookies
-
--   Possible features:
-    -   Contentful usage
-    -   Datavisualization (graphs) library usage
-    -   Hotjar for website feedback

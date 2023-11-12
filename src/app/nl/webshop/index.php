@@ -1,3 +1,42 @@
+<?php
+
+// Show all errors
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+
+// Database connection-settings
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'website');
+
+date_default_timezone_set('Europe/Brussels');
+
+// Console log helper function
+function debug_to_console($output) {
+    echo "<script>console.log('$output');</script>";
+}
+
+// Connect with the database
+try {
+    $db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	debug_to_console('Successfully connected to the database!');
+} catch (PDOException $e) {
+    debug_to_console('An error occurred while trying to connect to the database: ' . $e->getMessage());
+    exit;
+}
+
+$sql = "SELECT * FROM `product`";
+$result = $db->query($sql);
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="nl">
 	<head>
@@ -124,81 +163,27 @@
 			</header>
 			<div class="container">
 				<main>
-					<section>
-						<div class="card">
-							<img
-								src="../includes/candy - Copy.jpg"
-								alt="candy stock picture"
-							/>
-							<div class="container">
-								<h4><b>Candy</b></h4>
-								<p>Rare types of candy</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
-
-						<div class="card">
-							<img src="../includes/AK47.jpg" alt="AK-47 gun" />
-							<div class="container">
-								<h4><b>AK-47</b></h4>
-								<p>'Today I didn't even need to</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
-
-						<div class="card">
-							<img
-								src="../includes/money.jpg"
-								alt="fake dollar"
-							/>
-							<div class="container">
-								<h4><b>Fake money</b></h4>
-								<p>Get that moolahh</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
-
-						<div class="card">
-							<img src="../includes/beer - Copy.jpg" alt="beer" />
-							<div class="container">
-								<h4><b>Beer</b></h4>
-								<p>Rare types of Beer</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
-						<div class="card">
-							<img
-								src="../includes/cannabis.jpg"
-								alt="cannabis leaf"
-							/>
-							<div class="container">
-								<h4><b>Cannabis</b></h4>
-								<p>Get that ZA ZA</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
-						<div class="card">
-							<img
-								src="../includes/mdma - Copy.jpg"
-								alt="mdma stock picture"
-							/>
-							<div class="container">
-								<h4><b>MDMA</b></h4>
-								<p>Put the drugs in drank & drugs</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
-						<div class="card">
-							<img
-								src="../includes/meth.jpg"
-								alt="methamphetamine"
-							/>
-							<div class="container">
-								<h4><b>Methamphetamine</b></h4>
-								<p>To my other hero W.W.</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
+					<section class="card-placement">
+					<?php
+					       while ($row = $result->fetch(PDO::FETCH_ASSOC)){
+							$productId=$row['product-id']
+					?>
+					    
+					        <div class="card">
+					          
+					       
+					                <a href="./webshop-items/?myid=<?php echo $productId ?>">
+					                	<img src="<?php echo $row['image'] ?>"alt="<?php echo $row['name']?>">
+					                	<h2><?php echo $row['name'] ?></h2>
+								<div class="position">
+					                    		<p>&euro; <?php echo $row['price']?></p>
+									<button class="info">Lees meer!</button>
+								</div>
+					                </a>
+					        </div>
+					<?php
+						}           
+					?>
 					</section>
 				</main>
 				<footer class="fixed-footer">
