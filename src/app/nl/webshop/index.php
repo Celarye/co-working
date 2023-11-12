@@ -1,3 +1,42 @@
+<?php
+
+// Show all errors
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+
+// Database connection-settings
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'website');
+
+date_default_timezone_set('Europe/Brussels');
+
+// Console log helper function
+function debug_to_console($output) {
+    echo "<script>console.log('$output');</script>";
+}
+
+// Connect with the database
+try {
+    $db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	debug_to_console('Successfully connected to the database!');
+} catch (PDOException $e) {
+    debug_to_console('An error occurred while trying to connect to the database: ' . $e->getMessage());
+    exit;
+}
+
+$sql = "SELECT * FROM `product`";
+$result = $db->query($sql);
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="nl">
 	<head>
@@ -45,7 +84,7 @@
 						English
 					</button>
 				</li>
-			</ul>
+			</ul> 
 		</div>
 		<div class="language-selector-tint"></div>
 		<div class="content">
@@ -101,7 +140,7 @@
 										<path
 											fill-rule="evenodd"
 											d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-										/></svg
+										/></svg>
 								></a>
 							</li>
 							<li>
@@ -115,7 +154,7 @@
 									>
 										<path
 											d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-										/></svg
+										/></svg>
 								></a>
 							</li>
 						</ul>
@@ -124,82 +163,32 @@
 			</header>
 			<div class="container">
 				<main>
-					<section>
-						<div class="card">
-							<img
-								src="../includes/candy - Copy.jpg"
-								alt="candy stock picture"
-							/>
-							<div class="container">
-								<h4><b>Candy</b></h4>
-								<p>Rare types of candy</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
+					<section class="card-placement">
+					<?php
 
-						<div class="card">
-							<img src="../includes/AK47.jpg" alt="AK-47 gun" />
-							<div class="container">
-								<h4><b>AK-47</b></h4>
-								<p>'Today I didn't even need to</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
 
-						<div class="card">
-							<img
-								src="../includes/money.jpg"
-								alt="fake dollar"
-							/>
-							<div class="container">
-								<h4><b>Fake money</b></h4>
-								<p>Get that moolahh</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
-
-						<div class="card">
-							<img src="../includes/beer - Copy.jpg" alt="beer" />
-							<div class="container">
-								<h4><b>Beer</b></h4>
-								<p>Rare types of Beer</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
-						<div class="card">
-							<img
-								src="../includes/cannabis.jpg"
-								alt="cannabis leaf"
-							/>
-							<div class="container">
-								<h4><b>Cannabis</b></h4>
-								<p>Get that ZA ZA</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
-						<div class="card">
-							<img
-								src="../includes/mdma - Copy.jpg"
-								alt="mdma stock picture"
-							/>
-							<div class="container">
-								<h4><b>MDMA</b></h4>
-								<p>Put the drugs in drank & drugs</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
-						<div class="card">
-							<img
-								src="../includes/meth.jpg"
-								alt="methamphetamine"
-							/>
-							<div class="container">
-								<h4><b>Methamphetamine</b></h4>
-								<p>To my other hero W.W.</p>
-								<a href="">Buy now!</a>
-							</div>
-						</div>
-					</section>
+       while ($row = $result->fetch(PDO::FETCH_ASSOC)){
+		$productId=$row['product-id']
+           
+        ?>
+    
+            <div class="card">
+          
+       
+                <a href="./webshop-items/?myid=<?php echo $productId ?>">
+                    <img src="<?php echo $row['image'] ?>"alt="<?php echo $row['name']?>">
+                    <h2><?php echo $row['name'] ?></h2>
+					<div class="position">
+                    <p>&euro; <?php echo $row['price']?></p>
+					<button class="info">Lees meer!</button></div>
+                </a>
+                </div>
+<?php
+            }
+                
+                ?>
+           
+						</section>
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">

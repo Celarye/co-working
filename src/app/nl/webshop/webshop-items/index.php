@@ -1,3 +1,37 @@
+<?php 
+// Show all errors
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+
+// Database connection-settings
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'website');
+
+date_default_timezone_set('Europe/Brussels');
+
+// Console log helper function
+function debug_to_console($output) {
+    echo "<script>console.log('$output');</script>";
+}
+// Connect with the database
+try {
+    $db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	debug_to_console('Successfully connected to the database!');
+} catch (PDOException $e) {
+    debug_to_console('An error occurred while trying to connect to the database: ' . $e->getMessage());
+    exit;
+}
+
+$id = $_GET["myid"];
+$query = "SELECT * FROM `product` WHERE `product-id`= $id";
+$result = $db->query($query);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="nl">
 	<head>
@@ -13,10 +47,11 @@
 			href="https://unpkg.com/@csstools/normalize.css"
 			rel="stylesheet"
 		/>
+		<link rel="stylesheet" href="../../styles.css" />
 		<link rel="stylesheet" href="../styles.css" />
-		<link rel="stylesheet" href="styles.css" />
-		<link rel="icon" type="image/png" href="../../includes/favicon.png" />
-		<title>Accidental Founds | About Us</title>
+		<link rel="stylesheet" href="styles.css"/>
+		<link rel="icon" type="image/png" href="../../../includes/favicon.png" />
+		<title>Accidental Founds | Webshop</title>
 	</head>
 	<body>
 		<div class="language-selector-field">
@@ -24,7 +59,7 @@
 				<li>
 					<button
 						id="dutch"
-						onclick="languageSelect(this.id, '../..', '/aboutus')"
+						onclick="languageSelect(this.id, '../..', '/webshop')"
 					>
 						Nederlands
 					</button>
@@ -32,7 +67,7 @@
 				<li>
 					<button
 						id="french"
-						onclick="languageSelect(this.id, '../..', '/aboutus')"
+						onclick="languageSelect(this.id, '../..', '/webshop')"
 					>
 						Français
 					</button>
@@ -40,7 +75,7 @@
 				<li>
 					<button
 						id="english"
-						onclick="languageSelect(this.id, '../..', '/aboutus')"
+						onclick="languageSelect(this.id, '../..', '/webshop')"
 					>
 						English
 					</button>
@@ -51,13 +86,12 @@
 		<div class="content">
 			<header>
 				<nav>
-					<a href="../"
+					<a href="../../index.html"
 						><img
-							src="../../includes/logo.png"
+							src="../../../includes/logo.png"
 							alt="Website logo"
 						/>
-						Accidental&nbsp;Founds</a
-					>
+						Accidental&nbsp;Founds</a>
 					<section>
 						<div class="quick-search">
 							<svg
@@ -70,7 +104,7 @@
 									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
 								/>
 							</svg>
-							<form action="../webshop">
+							<form action="./">
 								<input
 									type="search"
 									name="search"
@@ -83,11 +117,11 @@
 					<section>
 						<ul>
 							<li>
-								<a href="../webshop">Webshop</a>
+								<a href="../">Webshop</a>
 							</li>
-							<li><a href="../contact">Contact</a></li>
+							<li><a href="../../contact">Contact</a></li>
 							<li>
-								<a title="Account" href="../account"
+								<a title="Account" href="../../account"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -105,7 +139,7 @@
 								></a>
 							</li>
 							<li>
-								<a title="Winkelmandje" href="../basket"
+								<a title="Winkelmandje" href="../../basket"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -123,10 +157,21 @@
 				</nav>
 			</header>
 			<div class="container">
-				<main>
-					<h1>About Us</h1>
-					<p>ヾ(´･ ･｀｡)ノ</p>
-				</main>
+
+<main >
+ 
+    
+		<?php $row = $result->fetch(PDO::FETCH_ASSOC);?>
+		
+		<div class="item">
+		<div class="image"><img src="../<?php echo $row['image']?>" alt="<?php echo $row['name']?>"></div>
+		<div class="item-info">
+		<h2><?php echo $row['name'] ?></h2>
+		<p><?php echo $row['description']?></p>
+		<p>&euro; <?php echo $row['price']?></p>
+		<button type="button">Voeg toe aan winkelmand</button></div></div>
+
+    </main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
 						Verander je taal
@@ -134,11 +179,11 @@
 					<p>
 						Copyright &copy; 2023 All rights reserved. Aiko De Prez,
 						Anureet Kaur, Jesse-Jadon Latré and Eduard Smet.
-						<a href="./">Over Ons</a>
+						<a href="../../aboutus/">Over Ons</a>
 					</p>
 				</footer>
 			</div>
 		</div>
-		<script src="../script.js"></script> 
+		<script src="../../script.js"></script>
 	</body>
 </html>

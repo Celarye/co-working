@@ -1,0 +1,48 @@
+:root {
+	--background-color-dark: #0d1321;
+	--background-color-light: #1d2d44;
+	--foreground-color: #3e5c76;
+	--border-and-link-color: #748cab;
+	--text-color: #f0ebd8;
+}
+.item{
+    display: flex;
+}
+.item-info{
+    margin-left: 15rem;
+}
+
+.item-info h2{
+    margin-bottom: 5rem;
+    font-size: 3rem;
+}
+
+.item-info p{
+    margin-bottom: 3rem;
+}
+
+.item-info p:nth-child(3){
+
+    font-weight: bold;
+    font-size: 2rem;
+
+}
+
+.image img{
+
+    height: 25rem;
+    width: 30rem;
+    border-radius: 1rem;
+}
+
+.item button{
+    background-color: var(--foreground-color);
+    margin-left:20rem;
+    box-shadow:  4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #fff;
+    border-radius: 0.5rem;
+    border-color: var(--foreground-color);
+    height: 3rem;
+    width:9rem;
+    margin-top: -6rem;
+}
