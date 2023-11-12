@@ -48,7 +48,7 @@ try {
 <title>Accidental Founds | Account</title>
 	</head>
 	<body>
-		<div class="language-selector-field">
+		<div class="language-selector-field language-selected">
 			<ul>
 				<li>
 					<button
@@ -76,7 +76,7 @@ try {
 				</li>
 			</ul>
 		</div>
-		<div class="language-selector-tint"></div>
+		<div class="language-selector-tint language-selected"></div>
 		<div class="content"><header>
 			<nav>
 				<a href="../"

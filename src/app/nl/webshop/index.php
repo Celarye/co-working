@@ -58,7 +58,7 @@ $result = $db->query($sql);
 		<title>Accidental Founds | Webshop</title>
 	</head>
 	<body>
-		<div class="language-selector-field">
+		<div class="language-selector-field language-selected">
 			<ul>
 				<li>
 					<button
@@ -86,7 +86,7 @@ $result = $db->query($sql);
 				</li>
 			</ul>
 		</div>
-		<div class="language-selector-tint"></div>
+		<div class="language-selector-tint language-selected"></div>
 		<div class="content">
 			<header>
 				<nav>
