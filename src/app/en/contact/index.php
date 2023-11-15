@@ -30,8 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$stmt->bindParam(":AID", $paramAID, PDO::PARAM_INT);
 				$stmt->bindParam(":message", $paramMessage, PDO::PARAM_STR);
 
-				debugToConsole("here");
-				
 				// Set the parameters
 				$paramAID = $_SESSION['accountId'];
 				$paramMessage = $message;
@@ -183,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true) {
 
 					?>
-					<section class="logged-out">
+					<section class="signed-out">
 						<p>Je moet ingelogd zijn om ons te kunnen contacteren.</p>
 						<a href="../account/signin">Inloggen</a>
 					</section>

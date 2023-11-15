@@ -3,7 +3,7 @@
 // Initialize the session
 session_start();
  
-// Check if the user is already logged in, if yes then redirect him to welcome page
+// Check if the user is already signed in, if yes then redirect him to welcome page
 if(isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true) {
     header("location: ../");
     exit;
@@ -14,7 +14,7 @@ require_once "../../../config.php";
 
 // Define variables and initialize with empty values
 $email = $password = "";
-$emailError = $passwordError = $loginError = "";
+$emailError = $passwordError = $signInError = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -74,12 +74,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         } else {
                             // Password is not valid, display a generic error message
-                            $loginError = "Onheldig email of password.";
+                            $signInError = "Onheldig email of password.";
                         };
                     };
                 } else {
                     // Email doesn't exist, display a generic error message
-                    $loginError = "Onheldig email of password.";
+                    $signInError = "Onheldig email of password.";
                 };
             } else {
                 echo "Er is iets misgegaan. Probeer het later nog eens.";
@@ -173,7 +173,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Zoeken..."
 								/>
 							</form>
 						</div>
@@ -232,15 +232,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 							<section class="password">
 								<label for="password">Wachtwoord</label>
 								<input type="password" name="password" id="password" class="<?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
-								<span class="invalid-entry-feedback"><?php echo $loginError,$passwordError; ?></span>
+								<span class="invalid-entry-feedback"><?php echo $signInError,$passwordError; ?></span>
 							</section>
 							<input type="submit" class="submit" value="Verzenden">
-							<p>Heb je nog geen account? <a href="../signup">Registreer je hier.</a></p>
+							<p>Hebt u nog geen account? <a href="../signup">Registreer u hier.</a></p>
 					</form>
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+						Verander Uw Taal
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.

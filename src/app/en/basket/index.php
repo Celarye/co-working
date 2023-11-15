@@ -3,7 +3,7 @@
 // Initialize the session
 session_start();
  
-// Check if the user is not signed in, if no then redirect them to login page
+// Check if the user is not signed in, if no then redirect them to sign in page
 if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true) {
     header("location: ../account/signin");	
 };

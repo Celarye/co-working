@@ -1,6 +1,6 @@
 :root {
 	--background-color-light: #1d2d44;
-	--border-and-link-color: #748cab;
+	--link-color: #8096b3;
 	--text-color: #f0ebd8;
 }
 
@@ -38,5 +38,5 @@ p {
 }
 
 a {
-	color: var(--border-and-link-color);
+	color: var(--link-color);
 }
