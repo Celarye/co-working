@@ -24,12 +24,12 @@ try {
 			};
 		} else {
 			http_response_code(404);
-			echo("404: De pagina was niet gevonden. <a href=\"../\">Ga terug naar de webshop.</a>");
+			echo("404 : La page est introuvable. <a href=\"../\">Retournez à la boutique en ligne.</a>");
 			exit;
 		};
 	};
 } catch(PDOException $e) {
-    echo "Er is iets misgegaan. Probeer het later nog eens. Error: " . $e->getMessage();
+    echo "Un problème s'est produit. Veuillez réessayer plus tard. Erreur : " . $e->getMessage();
 	exit;
 };
 
@@ -61,13 +61,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 							$quantityLeft = $_POST['quantity'] - ($quantitySum - 5);
 
 							if($quantityLeft == 1) {
-								$quantityError = 'U kunt nog maar 1 stuk aan uw winkelmandje toevoegen. Momenteel in uw winkelmandje: 4';
+								$quantityError = "Vous ne pouvez ajouter qu'une seule pièce à votre panier. Actuellement dans votre panier : 4";
 
 							} elseif($quantityLeft > 1) {
-								$quantityError = "U kunt nog maar een aantal van $quantityLeft stuks aan uw winkelmandje toevoegen. Momenteel in uw winkelmandje: $quantityInBasket";
+								$quantityError = "Vous ne pouvez ajouter que $quantityLeft pièces à votre panier. Actuellement dans votre panier : $quantityInBasket";
 							
 							} else {
-								$quantityError = 'Uw winkelmandje heeft het maximaal aantal stuks bereikt. Momenteel in uw winkelmandje: 5';
+								$quantityError = "Votre panier a atteint le nombre maximum d'articles. Actuellement dans votre panier : 5";
 							};
 						} else {
 							$sql = "UPDATE basketItem SET quantity = $quantitySum WHERE AID = $paramAID AND PID = $paramPID";
@@ -75,14 +75,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 							if($db->exec($sql)) {
 								// Show the success message
 								if($_POST['quantity'] > 1) {
-									$basketFeedbackPositive = "De items zijn toegevoegd aan je winkelmandje!";
+									$basketFeedbackPositive = "Les articles ont été ajoutés à votre panier !";
 
 								} else {
-									$basketFeedbackPositive = "Het item is toegevoegd aan je winkelmandje!";
+									$basketFeedbackPositive = "L'article a été ajouté à votre panier !";
 								};
 							} else {
 								// Show the failure message
-								$basketFeedbackNegative = "Er is iets misgegaan. Probeer het later nog eens.";
+								$basketFeedbackNegative = "Un problème s'est produit. Veuillez réessayer plus tard.";
 							};
 						};
 					};
@@ -104,14 +104,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						if($stmt->execute()) {
 							// Show the success message
 							if($_POST['quantity'] > 1) {
-								$basketFeedbackPositive = "De items zijn toegevoegd aan je winkelmandje!";
+								$basketFeedbackPositive = "Les articles ont été ajoutés à votre panier !";
 								
 							} else {
-								$basketFeedbackPositive = "Het item is toegevoegd aan je winkelmandje!";
+								$basketFeedbackPositive = "L'article a été ajouté à votre panier !";
 							};
 						} else {
 							// Show the failure message
-							$basketFeedbackNegative = "Er is iets misgegaan. Probeer het later nog eens.";
+							$basketFeedbackNegative = "Un problème s'est produit. Veuillez réessayer plus tard.";
 						};
 
 						// Close statement
@@ -124,13 +124,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     	unset($db);
 	
 	} catch(PDOException $e) {
-		echo "Er is iets misgegaan. Probeer het later nog eens. Error: " . $e->getMessage();
+		echo "Un problème s'est produit. Veuillez réessayer plus tard. Erreur : " . $e->getMessage();
 		exit;
 	};
 };
 
 ?><!DOCTYPE html>
-<html lang="nl">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -210,7 +210,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Rechercher..."
 								/>
 							</form>
 						</div>
@@ -240,7 +240,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								></a>
 							</li>
 							<li>
-								<a title="Winkelmandje" href="../../basket"
+								<a title="Panier" href="../../basket"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -292,8 +292,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 						?>
 						<section class="not-signed-in">
-							<a href="../../account/signin">Inloggen</a>
-							<p>U moet ingelogd zijn om producten aan je winkelmandje toe te voegen.</p>
+							<a href="../../account/signin">Se connecter</a>
+							<p>Vous devez être connecté pour ajouter des produits à votre panier.</p>
 						</section>
 						<?php
 
@@ -302,11 +302,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						?>
 						<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?id=<?php echo $productId; ?>" method="post">
 							<section>
-								<label for="quantity">Aantal</label>
+								<label for="quantity">Nombre</label>
 								<input type="number" name="quantity" class="quantity <?php echo (!empty($quantityError)) ? 'is-invalid' : ''; ?>" value="<?php echo $quantity; ?>" min="1" max="5" oninput="validity.valid||(value='');">
-								<p>Maximaal 5 per klant.</p>
+								<p>Maximum 5 par client.</p>
 							</section>
-							<input type="submit" value="Toevoegen Aan Winkelmandje">
+							<input type="submit" value="Ajouter au panier">
 						</form>
 						<section class="basket-feedback">
 							<p><?php echo $basketFeedbackPositive; ?></p>
@@ -321,11 +321,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
    				 </main>
 				<footer class="fixed-footer" id="fixed-footer-overwrite">
 					<button onclick="languageReselect()">
-						Verander je taal
+                        Changer de langue
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="../../aboutus/">Over Ons</a>
+						<a href="../../aboutus/">A propos de nous</a>
 					</p>
 				</footer>
 			</div>

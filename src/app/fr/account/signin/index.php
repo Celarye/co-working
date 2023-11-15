@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
  
     // Check if email is empty
     if(empty(trim($_POST["email"]))) {
-        $emailError = "Voer uw e-mailadres in.";
+        $emailError = "Entrez votre adresse e-mail.";
 
     } else {
         $email = trim($_POST["email"]);
@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Check if password is empty
     if(empty(trim($_POST["password"]))) {
-        $passwordError = "Voer uw wachtwoord in.";
+        $passwordError = "Entrez votre mot de passe.";
 		
     } else {
         $password = trim($_POST["password"]);
@@ -74,15 +74,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         } else {
                             // Password is not valid, display a generic error message
-                            $signInError = "Onheldig email of password.";
+                            $signInError = "E-mail ou mot de passe imprécis.";
                         };
                     };
                 } else {
                     // Email doesn't exist, display a generic error message
-                    $signInError = "Onheldig email of password.";
+                    $signInError = "E-mail ou mot de passe imprécis.";
                 };
             } else {
-                echo "Er is iets misgegaan. Probeer het later nog eens.";
+                echo "Un problème s'est produit. Veuillez réessayer plus tard.";
 				exit;
             };
             // Close statement
@@ -94,7 +94,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 };
 
 ?><!DOCTYPE html>
-<html lang="nl">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -115,7 +115,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			type="image/png"
 			href="../../../includes/favicon.png"
 		/>
-		<title>Accidental Founds | Sign In</title>
+		<title>Accidental Founds | Connexion</title>
 	</head>
 	<body>
 		<div class="language-selector-field language-selected">
@@ -173,7 +173,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Rechercher..."
 								/>
 							</form>
 						</div>
@@ -203,7 +203,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								></a>
 							</li>
 							<li>
-								<a title="Winkelmandje" href="../../basket"
+								<a title="Panier" href="../../basket"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -222,7 +222,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			</header>
 			<div class="container">
 				<main>
-					<h1>Sign In</h1>
+					<h1>Connexion</h1>
 					<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 							<section class="email">
 								<label for="email">E-mail</label>
@@ -230,21 +230,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<span class="invalid-entry-feedback"><?php echo $emailError; ?></span>
 							</section>
 							<section class="password">
-								<label for="password">Wachtwoord</label>
+								<label for="password">Mot de passe</label>
 								<input type="password" name="password" id="password" class="<?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
 								<span class="invalid-entry-feedback"><?php echo $signInError,$passwordError; ?></span>
 							</section>
-							<input type="submit" class="submit" value="Verzenden">
-							<p>Heb je nog geen account? <a href="../signup">Registreer je hier.</a></p>
+							<input type="submit" class="submit" value="Envoyer">
+							<p>Vous n'avez pas de compte ? <a href="../signup">S'inscrire ici.</a></p>
 					</form>
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+                        Changer de langue
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="./aboutus">Over Ons</a>
+						<a href="./aboutus">A propos de nous</a>
 					</p>
 				</footer>
 			</div>

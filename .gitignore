@@ -3,3 +3,6 @@ src/mysql/*
 
 # But track the website.sql file
 !website.sql
+
+# Ingnore the Webstorm .idea folder
+.idea

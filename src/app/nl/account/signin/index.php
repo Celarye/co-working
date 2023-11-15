@@ -74,12 +74,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         } else {
                             // Password is not valid, display a generic error message
-                            $signInError = "Onheldig email of password.";
+                            $signInError = "Ongeldig email of password.";
                         };
                     };
                 } else {
                     // Email doesn't exist, display a generic error message
-                    $signInError = "Onheldig email of password.";
+                    $signInError = "Ongeldig email of password.";
                 };
             } else {
                 echo "Er is iets misgegaan. Probeer het later nog eens.";

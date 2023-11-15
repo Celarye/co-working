@@ -21,7 +21,7 @@ try {
 	$basketQuery = $db->query($basketSql);
 
 } catch(PDOException $e) {
-    echo "Er is iets misgegaan. Probeer het later nog eens. Error: " . $e->getMessage();
+    echo "Un problème s'est produit. Veuillez réessayer plus tard. Erreur : " . $e->getMessage();
 	exit;
 };
 
@@ -34,11 +34,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					$PID = $basket['PID'];
 					$sql = "DELETE FROM basketItem WHERE AID = $AID AND PID = $PID";
 					if($db->exec($sql)) {
-						$deleteFromBasketFeedback = "Het artikel is verwijderd van uw winkelmandje.";
+						$deleteFromBasketFeedback = "L'article a été supprimé de votre panier.";
 					};
 				};
 			} catch(PDOException $e) {
-				echo "Er is iets misgegaan. Probeer het later nog eens. Error: " . $e->getMessage();
+				echo "Un problème s'est produit. Veuillez réessayer plus tard. Erreur: " . $e->getMessage();
 				exit;
 			};
 			break;
@@ -47,11 +47,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			try {
 				$sql = "DELETE FROM basketItem WHERE AID = $AID";
 				if($db->exec($sql)) {
-					$checkoutFeedback = "De artikelen zijn succesvol gekocht!";
+					$checkoutFeedback = "Les articles ont été achetés avec succès !";
 				};
 
 			} catch(PDOException $e) {
-				echo "Er is iets misgegaan. Probeer het later nog eens. Error: " . $e->getMessage();
+				echo "Un problème s'est produit. Veuillez réessayer plus tard. Erreur: " . $e->getMessage();
 				exit;
 			};
 			break;
@@ -62,7 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 };
 
 ?><!DOCTYPE html>
-<html lang="nl">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -79,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		<link rel="stylesheet" href="../styles.css" />
 		<link rel="stylesheet" href="styles.css" />
 		<link rel="icon" type="image/png" href="../../includes/favicon.png" />
-		<title>Accidental Founds | Winkelmandje</title>
+		<title>Accidental Founds | Panier</title>
 	</head>
 	<body>
 		<div class="language-selector-field language-selected">
@@ -137,7 +137,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Rechercher..."
 								/>
 							</form>
 						</div>
@@ -167,7 +167,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								></a>
 							</li>
 							<li>
-								<a title="Winkelmandje" href="./"
+								<a title="Panier" href="./"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -186,7 +186,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			</header>
 			<div class="container">
 				<main>
-					<h1>Winkelmandje</h1>
+					<h1>Panier</h1>
 					<?php
 						
 						if($basketQuery->rowCount() > 0) {
@@ -203,7 +203,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 										$productQuery = $db->query($productSql);
 
 									} catch(PDOException $e) {
-										echo "Er is iets misgegaan. Probeer het later nog eens. Error: " . $e->getMessage();
+										echo "Un problème s'est produit. Veuillez réessayer plus tard. Erreur: " . $e->getMessage();
 										exit;
 									};
 
@@ -213,9 +213,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<section>
 									<section class="info">
 										<h2><?php echo $product['name'] ?></h2>
-										<p>Aantal: <?php echo $basket['quantity'] ?></p>
+										<p>Nombre: <?php echo $basket['quantity'] ?></p>
 										<p class="price">&euro; <?php echo $product['price']*$basket['quantity'] ?></p>
-										<a href="../webshop/webshop-item/?id=<?php echo $product['productId'] ?>">Productpagina</a>
+										<a href="../webshop/webshop-item/?id=<?php echo $product['productId'] ?>">Page du produit</a>
 									</section>
 									<img src="<?php echo $product['image'] ?>" alt="<?php echo $product['name'] ?>">
 								</section>
@@ -242,9 +242,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					<section class="checkout">
 						<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 							<input type="hidden" name="post-identifier" value="checkout">
-							<input type="submit" value="Afrekenen">
+							<input type="submit" value="Sortie">
 						</form>
-						<a href="../webshop">Verder Winkelen</a>
+						<a href="../webshop">Autres achats</a>
 
 					</section>
 					<?php
@@ -252,7 +252,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						} else {
 
 					?>
-					<p>U hebt nog geen items in uw winkelmandje.</p>
+					<p>Vous n'avez pas encore d'articles dans votre panier.</p>
 					<?php
 
 						};
@@ -261,12 +261,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+                        Changer de langue
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur,
 						Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="./aboutus">Over Ons</a>
+						<a href="./aboutus">A propos de nous</a>
 					</p>
 				</footer>
 			</div>

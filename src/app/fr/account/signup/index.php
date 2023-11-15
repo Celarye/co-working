@@ -20,7 +20,7 @@ $emailError = $passwordError = $confirmPasswordError = "";
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate the email
     if(empty(trim($_POST["email"]))) {
-        $emailError = "Voer een geldig e-mailadres in.";
+        $emailError = "Veuillez entrer une adresse e-mail valide.";
 
     } elseif(filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
 		// Prepare a select statement
@@ -36,13 +36,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             // Attempt to execute the prepared statement
             if($stmt->execute()) {
                 if($stmt->rowCount() == 1) {
-                    $emailError = "Dit email address is al in gebruik.";
+                    $emailError = "Cette adresse e-mail est déjà utilisée.";
 
                 } else {
                     $email = trim($_POST["email"]);
                 };
             } else {
-				echo "Er is iets misgegaan. Probeer het later nog eens.";
+				echo "Un problème s'est produit. Veuillez réessayer plus tard.";
 				exit;
             };
 
@@ -50,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             unset($stmt);
         };
     } else {
-        $emailError = "Voer een geldig e-mailadres in.";
+        $emailError = "Veuillez entrer une adresse e-mail valide.";
     };
     
     // Validate the password
@@ -58,7 +58,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $passwordError = "Voer een wachtwoord in.";
 
     } elseif(strlen(trim($_POST["password"])) < 6) {
-        $passwordError = "Het wachtwoord moet minstens 6 tekens bevatten.";
+        $passwordError = "Le mot de passe doit contenir au moins 6 caractères.";
 
     } else {
         $password = trim($_POST["password"]);
@@ -66,13 +66,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Validate the confirm password
     if(empty(trim($_POST["confirmPassword"]))) {
-        $confirmPasswordError = "Voer het wachtwoord opnieuw in.";
+        $confirmPasswordError = "Entrez à nouveau le mot de passe.";
 
     } else {
         $confirmPassword = trim($_POST["confirmPassword"]);
 
         if(empty($passwordError) && ($password != $confirmPassword)) {
-            $confirmPasswordError = "Wachtwoorden kwamen niet overeen.";
+            $confirmPasswordError = "Les mots de passe ne correspondent pas.";
         };
     };
     
@@ -97,7 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				exit;
 				
             } else {
-				echo "Er is iets misgegaan. Probeer het later nog eens.";
+				echo "Un problème s'est produit. Veuillez réessayer plus tard.";
 				exit;
             };
             // Close statement
@@ -109,7 +109,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 };
 
 ?><!DOCTYPE html>
-<html lang="nl">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -130,7 +130,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			type="image/png"
 			href="../../../includes/favicon.png"
 		/>
-		<title>Accidental Founds | Aanmelden</title>
+		<title>Accidental Founds | S'enregistrer</title>
 	</head>
 	<body>
 		<div class="language-selector-field language-selected">
@@ -188,7 +188,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Rechercher..."
 								/>
 							</form>
 						</div>
@@ -218,7 +218,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								></a>
 							</li>
 							<li>
-								<a title="Winkelmandje" href="../../basket"
+								<a title="Panier" href="../../basket"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -237,7 +237,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			</header>
 			<div class="container">
 				<main>
-					<h1>Aanmelden</h1>
+					<h1>S'enregistrer</h1>
 					<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 							<section class="email">
 								<label for="email">E-mail</label>
@@ -245,26 +245,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<span class="invalid-entry-feedback"><?php echo $emailError; ?></span>
 							</section>
 							<section class="password">
-								<label for="password">Wachtwoord</label>
+								<label for="password">Mot de passe</label>
 								<input type="password" name="password" id="password" class="<?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
 								<span class="invalid-entry-feedback"><?php echo $passwordError; ?></span>
 							</section>
 							<section class="confirmPassword">
-								<label for="confirmPassword">Wachtwoord Bevestigen</label>
+								<label for="confirmPassword">Confirmation du mot de passe</label>
 								<input type="password" name="confirmPassword" id="confirmPassword" class="<?php echo (!empty($confirmPasswordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmPassword; ?>">
 								<span class="invalid-entry-feedback"><?php echo $confirmPasswordError; ?></span>
 							</section class="submit">
 							<input type="submit" class="submit" value="Verzenden">
-							<p>Heb je al een account? <a href="../signin">Meld je hier aan.</a></p>
+							<p>Avez-vous déjà un compte ? <a href="../signin">S'inscrire ici.</a></p>
 					</form>
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+                        Changer de langue
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="../../aboutus">Over Ons</a>
+						<a href="../../aboutus">A propos de nous</a>
 					</p>
 				</footer>
 			</div>

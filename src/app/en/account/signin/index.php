@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
  
     // Check if email is empty
     if(empty(trim($_POST["email"]))) {
-        $emailError = "Voer uw e-mailadres in.";
+        $emailError = "Enter your email address.";
 
     } else {
         $email = trim($_POST["email"]);
@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Check if password is empty
     if(empty(trim($_POST["password"]))) {
-        $passwordError = "Voer uw wachtwoord in.";
+        $passwordError = "Enter your password.";
 		
     } else {
         $password = trim($_POST["password"]);
@@ -74,15 +74,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         } else {
                             // Password is not valid, display a generic error message
-                            $signInError = "Onheldig email of password.";
+
+                            $loginError = "Invalid email or password.";
+
                         };
                     };
                 } else {
                     // Email doesn't exist, display a generic error message
-                    $signInError = "Onheldig email of password.";
+
+                    $loginError = "Invalid email or password.";
+
                 };
             } else {
-                echo "Er is iets misgegaan. Probeer het later nog eens.";
+                echo "Something went wrong. Please try again later.";
 				exit;
             };
             // Close statement
@@ -94,7 +98,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 };
 
 ?><!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -173,7 +177,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Search..."
 								/>
 							</form>
 						</div>
@@ -203,7 +207,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								></a>
 							</li>
 							<li>
-								<a title="Winkelmandje" href="../../basket"
+								<a title="Basket" href="../../basket"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -230,21 +234,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<span class="invalid-entry-feedback"><?php echo $emailError; ?></span>
 							</section>
 							<section class="password">
-								<label for="password">Wachtwoord</label>
+								<label for="password">Password</label>
 								<input type="password" name="password" id="password" class="<?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
 								<span class="invalid-entry-feedback"><?php echo $signInError,$passwordError; ?></span>
 							</section>
-							<input type="submit" class="submit" value="Verzenden">
-							<p>Heb je nog geen account? <a href="../signup">Registreer je hier.</a></p>
+							<input type="submit" class="submit" value="Send">
+							<p>Don't have an account yet? <a href="../signup">Sign up here.</a></p>
 					</form>
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+                        Change Your Language
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="./aboutus">Over Ons</a>
+						<a href="./aboutus">About Us</a>
 					</p>
 				</footer>
 			</div>
