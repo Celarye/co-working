@@ -4,21 +4,9 @@
 session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["signedIn"]) || $_SESSION["signedIn"] !== true){
+if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true){
     header("location: ./signin");
     exit;
-}
-
-function signOut() {
-	// Unset all of the session variables
-	session_unset();
-	
-	// Destroy the session
-	session_destroy();
-	
-	// Redirect to the sign in page
-	header("location: ./signin");
-	exit;
 }
 
 ?><!DOCTYPE html>
@@ -93,11 +81,10 @@ function signOut() {
 									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
 								/>
 							</svg>
-							<form action="../webshop">
+							<form action="../webshop/webshop-item/?">
 								<input
 									type="search"
-									name="search"
-									id="search"
+									name="id"
 									placeholder="Quick Search..."
 								/>
 							</form>
@@ -148,37 +135,28 @@ function signOut() {
 			<div class="container">
 				<main>
 					<h1>Account Info</h1>
-					<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+					<section class="info">
 						<section>
-							<label for="account-id">Account ID</label>
-							<input
-								type="text"
-								name="account-id"
-								id="account-id"
-								value="<?php echo htmlspecialchars($_SESSION["account-id"]); ?>"
-								disabled
-							/>
+							<h2>Account ID</h2>
+							<p><?php echo htmlspecialchars($_SESSION["accountId"]); ?></p>
 						</section>
 						<section>
-							<label for="email">E-mail</label>
-							<input
-								type="text"
-								name="email"
-								id="email"
-								value="<?php echo htmlspecialchars($_SESSION["email"]); ?>"
-								disabled
-							/>
+							<h2>E-mail</h2>
+							<p><?php echo htmlspecialchars($_SESSION["email"]); ?></p>
 						</section>
 						<section>
-							<label for="created-on">Account Creation Date</h2>
-							<input type="date" name="created-on" id="created-on" value="<?php echo htmlspecialchars($_SESSION["createdOn"]); ?>" disabled>
+							<h2>Aanmaakdatum Account</h2>
+							<p><?php echo htmlspecialchars($_SESSION["createdOn"]); ?></p>
 						</section>
-						<p>Opmerking: accountinfo bewerken wordt momenteel niet ondersteund. Verwijder in plaats daarvan je huidige account en maak een nieuwe aan.</p>
-					</form>
-					<form>
-						<input type="submit" id="sign-out" value="Uitloggen" onclick="<?php signOut(); ?>">
-						<input type="submit" id="account-deletion" value="Account Verwijderen">
-					</form>
+						<section class="disclaimer">
+							<p>Opmerking: account info bewerken wordt momenteel niet ondersteund.</p>
+							<p>Verwijder in de plaats daarvan uw huidige account en maak een nieuwe aan.</p>
+						</section>
+						<section>
+							<a href="./signout">Uitloggen</a>
+							<a href="./delete" id="account-delete">Verwijderen</a>
+						</section>
+					</section>
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">

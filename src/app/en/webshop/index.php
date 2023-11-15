@@ -1,4 +1,18 @@
-<!DOCTYPE html>
+<?php
+
+// Include the config file
+require_once "../../config.php";
+
+try {
+	$sql = "SELECT * FROM product";
+	$query = $db->query($sql);
+
+} catch(PDOException $e) {
+    echo "Er is iets misgegaan. Probeer het later nog eens. Error: " . $e->getMessage();
+	exit;
+};
+
+?><!DOCTYPE html>
 <html lang="nl">
 	<head>
 		<meta charset="UTF-8" />
@@ -16,7 +30,7 @@
 		<link rel="stylesheet" href="../styles.css" />
 		<link rel="stylesheet" href="styles.css" />
 		<link rel="icon" type="image/png" href="../../includes/favicon.png" />
-		<title>Accidental Founds | Winkelmandje</title>
+		<title>Accidental Founds | Webshop</title>
 	</head>
 	<body>
 		<div class="language-selector-field language-selected">
@@ -24,7 +38,7 @@
 				<li>
 					<button
 						id="dutch"
-						onclick="languageSelect(this.id, '../..', '/basket')"
+						onclick="languageSelect(this.id, '../..', '/webshop')"
 					>
 						Nederlands
 					</button>
@@ -32,7 +46,7 @@
 				<li>
 					<button
 						id="french"
-						onclick="languageSelect(this.id, '../..', '/basket')"
+						onclick="languageSelect(this.id, '../..', '/webshop')"
 					>
 						Français
 					</button>
@@ -40,7 +54,7 @@
 				<li>
 					<button
 						id="english"
-						onclick="languageSelect(this.id, '../..', '/basket')"
+						onclick="languageSelect(this.id, '../..', '/webshop')"
 					>
 						English
 					</button>
@@ -70,11 +84,10 @@
 									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
 								/>
 							</svg>
-							<form action="../webshop">
+							<form action="./webshop-item/?">
 								<input
 									type="search"
-									name="search"
-									id="search"
+									name="id"
 									placeholder="Quick Search..."
 								/>
 							</form>
@@ -83,7 +96,7 @@
 					<section>
 						<ul>
 							<li>
-								<a href="../webshop">Webshop</a>
+								<a href="./">Webshop</a>
 							</li>
 							<li><a href="../contact">Contact</a></li>
 							<li>
@@ -105,7 +118,7 @@
 								></a>
 							</li>
 							<li>
-								<a title="Winkelmandje" href="./"
+								<a title="Winkelmandje" href="../basket"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -124,45 +137,29 @@
 			</header>
 			<div class="container">
 				<main>
-					<section class="basket">
-						<h1>Winkelmandje</h1>
-						<h2>Momenteel in jouw winkelmandje:</h2>
+					<h1>Webshop</h1>
+					<section>
 						<ul>
+							<?php
+
+								while ($product = $query->fetch(PDO::FETCH_ASSOC)) {
+
+							?>
 							<li>
+								<a href="./webshop-item/?id=<?php echo $product['productId'] ?>"></a>
 								<section class="info">
-									<p>item 1</p>
-									<p>£15,95</p>
+									<h2><?php echo $product['name'] ?></h2>
+									<p>&euro; <?php echo $product['price'] ?></p>
+									<button>Lees meer!</button>
 								</section>
-								<img
-									src="https://picsum.photos/350/150?2"
-									alt="foto van item 1"
-								/>
+								<img src="<?php echo $product['image'] ?>" alt="<?php echo $product['name'] ?>">
 							</li>
-							<li>
-								<section class="info">
-									<p>item 1</p>
-									<p>£15,95</p>
-								</section>
-								<img
-									src="https://picsum.photos/350/150?2"
-									alt="foto van item 1"
-								/>
-							</li>
-							<li>
-								<section class="info">
-									<p>item 1</p>
-									<p>£15,95</p>
-								</section>
-								<img
-									src="https://picsum.photos/350/150?2"
-									alt="foto van item 1"
-								/>
-							</li>
+							<?php
+
+								};
+							
+							?>
 						</ul>
-					</section>
-					<section class="checkout">
-						<button type="button">Afrekenen</button>
-						<a href="../webshop">Verder Winkelen</a>
 					</section>
 				</main>
 				<footer class="fixed-footer">
@@ -170,9 +167,8 @@
 						Verander je taal
 					</button>
 					<p>
-						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur,
-						Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="./aboutus">Over Ons</a>
+						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
+						<a href="../aboutus">Over Ons</a>
 					</p>
 				</footer>
 			</div>

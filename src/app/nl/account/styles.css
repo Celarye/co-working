@@ -1,4 +1,4 @@
-main {
+section.info {
 	display: flex;
 	flex-direction: column;
 	align-items: start;
@@ -10,14 +10,19 @@ h2 {
 	padding-bottom: 0.5em;
 }
 
-main section:last-child {
+main .info .disclaimer {
+	padding: 1em;
+	padding-left: 0;
+}
+
+.info section:last-child {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1em;
 	padding: 1em 0;
 }
 
-main a {
+.info a {
 	background: var(--foreground-color);
 	color: var(--text-color);
 	padding: 1em 2em;
@@ -27,6 +32,6 @@ main a {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-main a#account-delete {
-	background: var(--destroy-color);
+.info a#account-delete {
+	background: var(--destroy-error-color);
 }

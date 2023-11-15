@@ -4,7 +4,7 @@
 	--foreground-color: #3e5c76;
 	--border-and-link-color: #748cab;
 	--text-color: #f0ebd8;
-	--destroy-color: #d01515;
+	--destroy-error-color: #d01515;
 }
 
 *,
@@ -31,6 +31,7 @@ body {
 
 h1 {
 	margin: 0;
+	padding-bottom: 0.5em;
 }
 
 h2 {
@@ -39,6 +40,12 @@ h2 {
 
 p {
 	margin: 0;
+	line-height: 1.5em;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
 }
 
 button {
@@ -46,10 +53,27 @@ button {
 	cursor: pointer;
 }
 
+input {
+	font-family: inherit;
+}
+
+input:focus {
+	outline: none;
+}
+
+textarea:focus {
+	outline: none;
+}
+
+input[type='button'],
+input[type='submit'] {
+	cursor: pointer;
+}
+
 body .language-selector-field {
-	position: absolute;
-	top: 50vh;
-	left: 50vw;
+	position: fixed;
+	top: 50%;
+	left: 50%;
 	transform: translatey(-50%) translatex(-50%);
 	z-index: 3;
 	display: flex;
@@ -167,14 +191,16 @@ nav .quick-search form {
 
 nav .quick-search input {
 	background: inherit;
-	border: 0;
 	padding: 0.5em 1em 0.5em 0;
+	font-size: 0.8rem;
 	color: inherit;
 	width: 100%;
+	border: 0;
 }
 
 nav .quick-search input:focus {
 	outline: none;
+	box-shadow: none;
 }
 
 nav ul {
@@ -202,6 +228,28 @@ nav a {
 	nav section:nth-child(2) {
 		padding: 0 0.5em;
 		width: 17em;
+	}
+}
+
+main {
+	padding-bottom: 150px;
+}
+
+@media only screen and (max-width: 871px) {
+	main {
+		padding-bottom: 174px;
+	}
+}
+
+@media only screen and (max-width: 455px) {
+	main {
+		padding-bottom: 198px;
+	}
+}
+
+@media only screen and (max-width: 325px) {
+	main {
+		padding-bottom: 222px;
 	}
 }
 
@@ -249,12 +297,12 @@ footer {
 	width: 100%;
 }
 
-@media only screen and (min-width: 400px) {
-	footer.fixed-footer {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-	}
+@media only screen and (max-height: 60vh) {
+}
+footer.fixed-footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
 
 footer button {

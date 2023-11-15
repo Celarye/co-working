@@ -3,6 +3,13 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<noscript
+			><style>
+				.js-only {
+					display: none;
+				}
+			</style></noscript
+		>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -18,7 +25,16 @@
 		<title>Accidental Founds</title>
 	</head>
 	<body>
-		<p>Redirecting...</p>
+		<noscript>
+			<p>Sorry, Accidental Founds requires Javascript.</p>
+			<p>
+				Please enable Javascript or
+				<a href="http://outdatedbrowser.com"
+					>upgrade to a modern web browser</a
+				>.
+			</p>
+		</noscript>
+		<p class="js-only">Redirecting...</p>
 		<script src="script.js"></script>
 	</body>
 </html>

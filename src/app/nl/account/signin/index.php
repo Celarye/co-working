@@ -4,7 +4,7 @@
 session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["signedIn"]) && $_SESSION["signedIn"] === true) {
+if(isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true) {
     header("location: ../");
     exit;
 }
@@ -22,6 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if email is empty
     if(empty(trim($_POST["email"]))) {
         $emailError = "Voer uw e-mailadres in.";
+
     } else {
         $email = trim($_POST["email"]);
     }
@@ -29,6 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if password is empty
     if(empty(trim($_POST["password"]))) {
         $passwordError = "Voer uw wachtwoord in.";
+		
     } else {
         $password = trim($_POST["password"]);
     }
@@ -50,10 +52,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Check if email exists, if yes then verify password
                 if($stmt->rowCount() == 1) {
                     if($row = $stmt->fetch()) {
-                        $accountId = $row["account-id"];
+                        $accountId = $row["accountId"];
                         $email = $row["email"];
                         $hashed_password = $row["password"];
-						$createdOn = $row["created-on"];
+						$createdOn = $row["createdOn"];
 
                         if(password_verify($password, $hashed_password)) {
 
@@ -81,6 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             } else {
                 echo "Er is iets misgegaan. Probeer het later nog eens.";
+				exit;
             }
 
             // Close statement
@@ -168,11 +171,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
 								/>
 							</svg>
-							<form action="../../webshop">
+							<form action="../../webshop/webshop-item/?">
 								<input
 									type="search"
-									name="search"
-									id="search"
+									name="id"
 									placeholder="Quick Search..."
 								/>
 							</form>

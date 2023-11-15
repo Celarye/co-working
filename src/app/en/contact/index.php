@@ -1,4 +1,57 @@
-<!DOCTYPE html>
+<?php
+
+// Initialize the session
+session_start();
+
+// Include the config file
+require_once "../../config.php";
+
+// Define variables and initialize with empty values
+$message = "";
+$messageError = $messageFeedback = "";
+
+// Processing the form data when it's submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	try {
+		// Check if the message is empty
+		if(empty(trim($_POST["message"]))) {
+			$messageError = "Voer een bericht in.";     
+		} else {
+			$message = $_POST['message'];
+		};
+
+		// end of form check. If $allOk still is true, then the form was sent in correctly
+		if (empty($messageError)) {
+			// build & execute prepared statement
+			$sql = "INSERT INTO message (AID, message) VALUES (:AID, :message)";
+			
+			if($stmt = $db->prepare($sql)) {
+				// Bind variables to the prepared statement as parameters
+				$stmt->bindParam(":AID", $paramAID, PDO::PARAM_INT);
+				$stmt->bindParam(":message", $paramMessage, PDO::PARAM_STR);
+
+				debugToConsole("here");
+				
+				// Set the parameters
+				$paramAID = $_SESSION['accountId'];
+				$paramMessage = $message;
+				
+				// Attempt to execute the prepared statement
+				if($stmt->execute()) {
+					// Show the success message
+					$messageFeedback = "Uw bericht is succesvol ontvangen.";
+				} else {
+					$messageFeedback = "Er is iets misgegaan. Probeer het later nog eens.";
+				};
+			};
+		};
+	} catch(PDOException $e) {
+		echo "Er is iets misgegaan. Probeer het later nog eens. Error: " . $e->getMessage();
+		exit;
+	};
+};
+
+?><!DOCTYPE html>
 <html lang="nl">
 	<head>
 		<meta charset="UTF-8" />
@@ -16,7 +69,7 @@
 		<link rel="stylesheet" href="../styles.css" />
 		<link rel="stylesheet" href="styles.css" />
 		<link rel="icon" type="image/png" href="../../includes/favicon.png" />
-		<title>Accidental Founds | Winkelmandje</title>
+		<title>Accidental Founds | Contact</title>
 	</head>
 	<body>
 		<div class="language-selector-field language-selected">
@@ -24,7 +77,7 @@
 				<li>
 					<button
 						id="dutch"
-						onclick="languageSelect(this.id, '../..', '/basket')"
+						onclick="languageSelect(this.id, '../..', '/contact')"
 					>
 						Nederlands
 					</button>
@@ -32,7 +85,7 @@
 				<li>
 					<button
 						id="french"
-						onclick="languageSelect(this.id, '../..', '/basket')"
+						onclick="languageSelect(this.id, '../..', '/contact')"
 					>
 						Français
 					</button>
@@ -40,7 +93,7 @@
 				<li>
 					<button
 						id="english"
-						onclick="languageSelect(this.id, '../..', '/basket')"
+						onclick="languageSelect(this.id, '../..', '/contact')"
 					>
 						English
 					</button>
@@ -70,11 +123,10 @@
 									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
 								/>
 							</svg>
-							<form action="../webshop">
+							<form action="../webshop/webshop-item/?">
 								<input
 									type="search"
-									name="search"
-									id="search"
+									name="id"
 									placeholder="Quick Search..."
 								/>
 							</form>
@@ -85,7 +137,7 @@
 							<li>
 								<a href="../webshop">Webshop</a>
 							</li>
-							<li><a href="../contact">Contact</a></li>
+							<li><a href="./">Contact</a></li>
 							<li>
 								<a title="Account" href="../account"
 									><svg
@@ -105,7 +157,7 @@
 								></a>
 							</li>
 							<li>
-								<a title="Winkelmandje" href="./"
+								<a title="Winkelmandje" href="../basket"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -124,46 +176,36 @@
 			</header>
 			<div class="container">
 				<main>
-					<section class="basket">
-						<h1>Winkelmandje</h1>
-						<h2>Momenteel in jouw winkelmandje:</h2>
-						<ul>
-							<li>
-								<section class="info">
-									<p>item 1</p>
-									<p>£15,95</p>
-								</section>
-								<img
-									src="https://picsum.photos/350/150?2"
-									alt="foto van item 1"
-								/>
-							</li>
-							<li>
-								<section class="info">
-									<p>item 1</p>
-									<p>£15,95</p>
-								</section>
-								<img
-									src="https://picsum.photos/350/150?2"
-									alt="foto van item 1"
-								/>
-							</li>
-							<li>
-								<section class="info">
-									<p>item 1</p>
-									<p>£15,95</p>
-								</section>
-								<img
-									src="https://picsum.photos/350/150?2"
-									alt="foto van item 1"
-								/>
-							</li>
-						</ul>
+					<h1>Contacteer Ons</h1>
+					<?php
+
+						// Check if the user is signed in
+						if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true) {
+
+					?>
+					<section class="logged-out">
+						<p>Je moet ingelogd zijn om ons te kunnen contacteren.</p>
+						<a href="../account/signin">Inloggen</a>
 					</section>
-					<section class="checkout">
-						<button type="button">Afrekenen</button>
-						<a href="../webshop">Verder Winkelen</a>
-					</section>
+					<?php
+
+						} else {
+					
+					?>
+					<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+						<section>
+							<label for="message">Bericht</label>
+							<textarea name="message" class="<?php echo (!empty($messageError)) ? 'is-invalid' : ''; ?>"><?php echo htmlentities($message); ?></textarea>
+							<span class="message-error"><?php echo $messageError; ?></span>
+						</section>
+						<input type="submit" value="Verstuur"/>
+						<p><?php echo $messageFeedback; ?></p>
+					</form>
+					<?php
+
+						};
+
+					?>
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">

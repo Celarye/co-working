@@ -4,7 +4,7 @@
 session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["signedIn"]) || $_SESSION["signedIn"] !== true){
+if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true){
     header("location: ./signin");
     exit;
 }
@@ -81,11 +81,10 @@ if(!isset($_SESSION["signedIn"]) || $_SESSION["signedIn"] !== true){
 									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
 								/>
 							</svg>
-							<form action="../webshop">
+							<form action="../webshop/webshop-item/?">
 								<input
 									type="search"
-									name="search"
-									id="search"
+									name="id"
 									placeholder="Quick Search..."
 								/>
 							</form>
@@ -136,25 +135,27 @@ if(!isset($_SESSION["signedIn"]) || $_SESSION["signedIn"] !== true){
 			<div class="container">
 				<main>
 					<h1>Account Info</h1>
-					<section>
-						<h2>Account ID</h2>
-						<p><?php echo htmlspecialchars($_SESSION["accountId"]); ?></p>
-					</section>
-					<section>
-						<h2>E-mail</h2>
-						<p><?php echo htmlspecialchars($_SESSION["email"]); ?></p>
-					</section>
-					<section>
-						<h2>Aanmaakdatum Account</h2>
-						<p><?php echo htmlspecialchars($_SESSION["createdOn"]); ?></p>
-					</section>
-					<section>
-						<p>Opmerking: account info bewerken wordt momenteel niet ondersteund.</p>
-						<p>Verwijder in de plaats daarvan uw huidige account en maak een nieuwe aan.</p>
-					</section>
-					<section>
-						<a href="./signout">Uitloggen</a>
-						<a href="./delete" id="account-delete">Verwijder</a>
+					<section class="info">
+						<section>
+							<h2>Account ID</h2>
+							<p><?php echo htmlspecialchars($_SESSION["accountId"]); ?></p>
+						</section>
+						<section>
+							<h2>E-mail</h2>
+							<p><?php echo htmlspecialchars($_SESSION["email"]); ?></p>
+						</section>
+						<section>
+							<h2>Aanmaakdatum Account</h2>
+							<p><?php echo htmlspecialchars($_SESSION["createdOn"]); ?></p>
+						</section>
+						<section class="disclaimer">
+							<p>Opmerking: account info bewerken wordt momenteel niet ondersteund.</p>
+							<p>Verwijder in de plaats daarvan uw huidige account en maak een nieuwe aan.</p>
+						</section>
+						<section>
+							<a href="./signout">Uitloggen</a>
+							<a href="./delete" id="account-delete">Verwijderen</a>
+						</section>
 					</section>
 				</main>
 				<footer class="fixed-footer">
