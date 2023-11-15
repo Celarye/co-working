@@ -21,6 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate the email
     if(empty(trim($_POST["email"]))) {
         $emailError = "Voer een geldig e-mailadres in.";
+
     } elseif(filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
 		// Prepare a select statement
         $sql = "SELECT email FROM account WHERE email = :email";
@@ -39,28 +40,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 } else {
                     $email = trim($_POST["email"]);
-                }
+                };
             } else {
 				echo "Er is iets misgegaan. Probeer het later nog eens.";
 				exit;
-            }
+            };
 
             // Close statement
             unset($stmt);
-        }
+        };
     } else {
         $emailError = "Voer een geldig e-mailadres in.";
-    }
+    };
     
     // Validate the password
     if(empty(trim($_POST["password"]))) {
-        $passwordError = "Voer een wachtwoord in.";     
+        $passwordError = "Voer een wachtwoord in.";
+
     } elseif(strlen(trim($_POST["password"])) < 6) {
         $passwordError = "Het wachtwoord moet minstens 6 tekens bevatten.";
 
     } else {
         $password = trim($_POST["password"]);
-    }
+    };
     
     // Validate the confirm password
     if(empty(trim($_POST["confirmPassword"]))) {
@@ -68,10 +70,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } else {
         $confirmPassword = trim($_POST["confirmPassword"]);
+
         if(empty($passwordError) && ($password != $confirmPassword)) {
             $confirmPasswordError = "Wachtwoorden kwamen niet overeen.";
-        }
-    }
+        };
+    };
     
     // Check the input errors before inserting the user data in the database
     if(empty($emailError) && empty($passwordError) && empty($confirmPasswordError)) {        
@@ -96,16 +99,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
 				echo "Er is iets misgegaan. Probeer het later nog eens.";
 				exit;
-            }
-
+            };
             // Close statement
             unset($stmt);
-        }
-    }
-    
+        };
+    };
     // Close connection
     unset($db);
-}
+};
 
 ?><!DOCTYPE html>
 <html lang="nl">

@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					$PID = $basket['PID'];
 					$sql = "DELETE FROM basketItem WHERE AID = $AID AND PID = $PID";
 					if($db->exec($sql)) {
-						$deleteFromBasketFeedback = "Het artikel is verwijderd van je winkelmandje.";
+						$deleteFromBasketFeedback = "Het artikel is verwijderd van uw winkelmandje.";
 					};
 				};
 			} catch(PDOException $e) {
@@ -229,13 +229,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 									<input class="hidden-submit" id="submit" type="submit">
 								</form>
 							</li>
-							<p><?php echo $deleteFromBasketFeedback ?></p>
 							<?php
 
 									};
 								};
 							
 							?>
+							<p><?php echo $deleteFromBasketFeedback ?></p>
+							<p><?php echo $checkoutFeedback ?></p>
 						</ul>
 					</section>
 					<section class="checkout">
@@ -243,8 +244,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 							<input type="hidden" name="post-identifier" value="checkout">
 							<input type="submit" value="Afrekenen">
 						</form>
-						<p><?php echo $checkoutFeedback ?></p>
 						<a href="../webshop">Verder Winkelen</a>
+
 					</section>
 					<?php
 
