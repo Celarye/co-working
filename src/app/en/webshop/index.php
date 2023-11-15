@@ -8,12 +8,12 @@ try {
 	$query = $db->query($sql);
 
 } catch(PDOException $e) {
-    echo "Er is iets misgegaan. Probeer het later nog eens. Error: " . $e->getMessage();
+    echo "Something went wrong. Please try again later. Error: " . $e->getMessage();
 	exit;
 };
 
 ?><!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -88,7 +88,7 @@ try {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Search..."
 								/>
 							</form>
 						</div>
@@ -118,7 +118,7 @@ try {
 								></a>
 							</li>
 							<li>
-								<a title="Winkelmandje" href="../basket"
+								<a title="Basket" href="../basket"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -150,7 +150,7 @@ try {
 								<section class="info">
 									<h2><?php echo $product['name'] ?></h2>
 									<p>&euro; <?php echo $product['price'] ?></p>
-									<button>Lees meer!</button>
+									<button>Read More</button>
 								</section>
 								<img src="<?php echo $product['image'] ?>" alt="<?php echo $product['name'] ?>">
 							</li>
@@ -164,11 +164,11 @@ try {
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+                        Change Your Language
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="../aboutus">Over Ons</a>
+						<a href="../aboutus">About Us</a>
 					</p>
 				</footer>
 			</div>

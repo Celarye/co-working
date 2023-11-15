@@ -28,7 +28,7 @@ try {
         exit;
     };
 } catch(PDOException $e) {
-    echo "Er is iets misgegaan. Probeer het later nog eens. Error: " . $e->getMessage();
+    echo "Something went wrong. Please try again later. Error: " . $e->getMessage();
     exit;
 };
 

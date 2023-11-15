@@ -10,7 +10,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 };
 
 ?><!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -85,7 +85,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Search..."
 								/>
 							</form>
 						</div>
@@ -115,7 +115,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 								></a>
 							</li>
 							<li>
-								<a title="Winkelmandje" href="../basket"
+								<a title="Basket" href="../basket"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -145,26 +145,26 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 							<p><?php echo htmlspecialchars($_SESSION["email"]); ?></p>
 						</section>
 						<section>
-							<h2>Aanmaakdatum Account</h2>
+							<h2>Account creation date</h2>
 							<p><?php echo htmlspecialchars($_SESSION["createdOn"]); ?></p>
 						</section>
 						<section class="disclaimer">
-							<p>Opmerking: account info bewerken wordt momenteel niet ondersteund.</p>
-							<p>Verwijder in de plaats daarvan uw huidige account en maak een nieuwe aan.</p>
+							<p>Note: Edit account info is currently not supported.</p>
+                            <p>Delete your current account instead and create a new one.</p>
 						</section>
 						<section>
-							<a href="./signout">Uitloggen</a>
-							<a href="./delete" id="account-delete">Verwijderen</a>
+							<a href="./signout">Sign Out</a>
+							<a href="./delete" id="account-delete">Delete</a>
 						</section>
 					</section>
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+                        Change Your Language
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="./aboutus">Over Ons</a>
+						<a href="./aboutus">About Us</a>
 					</p>
 				</footer>
 			</div>

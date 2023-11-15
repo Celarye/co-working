@@ -39,20 +39,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				// Attempt to execute the prepared statement
 				if($stmt->execute()) {
 					// Show the success message
-					$messageFeedback = "Uw bericht is succesvol ontvangen.";
+					$messageFeedback = "Your message was received successfully.";
 				} else {
-					$messageFeedback = "Er is iets misgegaan. Probeer het later nog eens.";
+					$messageFeedback = "Something went wrong. Please try again later.";
 				};
 			};
 		};
 	} catch(PDOException $e) {
-		echo "Er is iets misgegaan. Probeer het later nog eens. Error: " . $e->getMessage();
+		echo "Something went wrong. Please try again later. Error: " . $e->getMessage();
 		exit;
 	};
 };
 
 ?><!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Search..."
 								/>
 							</form>
 						</div>
@@ -157,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								></a>
 							</li>
 							<li>
-								<a title="Winkelmandje" href="../basket"
+								<a title="Basket" href="../basket"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -176,7 +176,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			</header>
 			<div class="container">
 				<main>
-					<h1>Contacteer Ons</h1>
+					<h1>Contact Us</h1>
 					<?php
 
 						// Check if the user is signed in
@@ -184,7 +184,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 					?>
 					<section class="logged-out">
-						<p>Je moet ingelogd zijn om ons te kunnen contacteren.</p>
+						<p>You must be logged in to contact us.</p>
 						<a href="../account/signin">Inloggen</a>
 					</section>
 					<?php
@@ -194,7 +194,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					?>
 					<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 						<section>
-							<label for="message">Bericht</label>
+							<label for="message">Message</label>
 							<textarea name="message" class="<?php echo (!empty($messageError)) ? 'is-invalid' : ''; ?>"><?php echo htmlentities($message); ?></textarea>
 							<span class="message-error"><?php echo $messageError; ?></span>
 						</section>
@@ -209,12 +209,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+                        Change Your Language
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur,
 						Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="./aboutus">Over Ons</a>
+						<a href="./aboutus">About Us</a>
 					</p>
 				</footer>
 			</div>

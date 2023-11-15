@@ -10,7 +10,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 };
 
 ?><!DOCTYPE html>
-<html lang="nl">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -85,7 +85,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Rechercher..."
 								/>
 							</form>
 						</div>
@@ -115,7 +115,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 								></a>
 							</li>
 							<li>
-								<a title="Winkelmandje" href="../basket"
+								<a title="Panier" href="../basket"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -134,10 +134,10 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 			</header>
 			<div class="container">
 				<main>
-					<h1>Account Info</h1>
+					<h1>Info sur le compte</h1>
 					<section class="info">
 						<section>
-							<h2>Account ID</h2>
+							<h2>ID du compte</h2>
 							<p><?php echo htmlspecialchars($_SESSION["accountId"]); ?></p>
 						</section>
 						<section>
@@ -145,26 +145,26 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 							<p><?php echo htmlspecialchars($_SESSION["email"]); ?></p>
 						</section>
 						<section>
-							<h2>Aanmaakdatum Account</h2>
+							<h2>Date de création du compte</h2>
 							<p><?php echo htmlspecialchars($_SESSION["createdOn"]); ?></p>
 						</section>
 						<section class="disclaimer">
-							<p>Opmerking: account info bewerken wordt momenteel niet ondersteund.</p>
-							<p>Verwijder in de plaats daarvan uw huidige account en maak een nieuwe aan.</p>
+							<p>Note : L'édition des informations de compte n'est actuellement pas possible.</p>
+							<p>Au lieu de cela, supprimez votre compte actuel et créez-en un nouveau.</p>
 						</section>
 						<section>
-							<a href="./signout">Uitloggen</a>
-							<a href="./delete" id="account-delete">Verwijderen</a>
+							<a href="./signout">Se déconnecter</a>
+							<a href="./delete" id="account-delete">Supprimer</a>
 						</section>
 					</section>
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+                        Changer de langue
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="./aboutus">Over Ons</a>
+						<a href="./aboutus">A propos de nous</a>
 					</p>
 				</footer>
 			</div>

@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	try {
 		// Check if the message is empty
 		if(empty(trim($_POST["message"]))) {
-			$messageError = "Voer een bericht in.";     
+			$messageError = "Entrez un message.";
 		} else {
 			$message = $_POST['message'];
 		};
@@ -39,20 +39,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				// Attempt to execute the prepared statement
 				if($stmt->execute()) {
 					// Show the success message
-					$messageFeedback = "Uw bericht is succesvol ontvangen.";
+					$messageFeedback = "Votre message a été bien reçu.";
 				} else {
-					$messageFeedback = "Er is iets misgegaan. Probeer het later nog eens.";
+					$messageFeedback = "Un problème s'est produit. Veuillez réessayer plus tard.";
 				};
 			};
 		};
 	} catch(PDOException $e) {
-		echo "Er is iets misgegaan. Probeer het later nog eens. Error: " . $e->getMessage();
+		echo "Un problème s'est produit. Veuillez réessayer plus tard. Erreur: " . $e->getMessage();
 		exit;
 	};
 };
 
 ?><!DOCTYPE html>
-<html lang="nl">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Rechercher..."
 								/>
 							</form>
 						</div>
@@ -157,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								></a>
 							</li>
 							<li>
-								<a title="Winkelmandje" href="../basket"
+								<a title="Panier" href="../basket"
 									><svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="28"
@@ -176,7 +176,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			</header>
 			<div class="container">
 				<main>
-					<h1>Contacteer Ons</h1>
+					<h1>Contactez-nous</h1>
 					<?php
 
 						// Check if the user is signed in
@@ -184,8 +184,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 					?>
 					<section class="logged-out">
-						<p>Je moet ingelogd zijn om ons te kunnen contacteren.</p>
-						<a href="../account/signin">Inloggen</a>
+						<p>Vous devez être connecté pour nous contacter.</p>
+						<a href="../account/signin">Se connecter</a>
 					</section>
 					<?php
 
@@ -194,11 +194,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					?>
 					<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 						<section>
-							<label for="message">Bericht</label>
+							<label for="message">Message</label>
 							<textarea name="message" class="<?php echo (!empty($messageError)) ? 'is-invalid' : ''; ?>"><?php echo htmlentities($message); ?></textarea>
 							<span class="message-error"><?php echo $messageError; ?></span>
 						</section>
-						<input type="submit" value="Verstuur"/>
+						<input type="submit" value="Envoyez"/>
 						<p><?php echo $messageFeedback; ?></p>
 					</form>
 					<?php
@@ -209,7 +209,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+                        Changer de langue
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur,
