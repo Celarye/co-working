@@ -3,7 +3,7 @@
 // Initialize the session
 session_start();
  
-// Check if the user is not signed in, if no then redirect them to login page
+// Check if the user is not signed in, if no then redirect them to sign in page
 if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true) {
     header("location: ../signin");
     exit;
@@ -23,7 +23,7 @@ try {
         // Destroy the session.
         session_destroy();
 
-        // Redirect to login page
+        // Redirect to sign in page
         header("location: ../signin");
         exit;
     };
@@ -33,6 +33,6 @@ try {
 };
 
 // Close connection
-unset($pdo);
+unset($db);
 
 ?>

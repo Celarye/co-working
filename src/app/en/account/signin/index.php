@@ -3,7 +3,7 @@
 // Initialize the session
 session_start();
  
-// Check if the user is already logged in, if yes then redirect him to welcome page
+// Check if the user is already signed in, if yes then redirect him to welcome page
 if(isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true) {
     header("location: ../");
     exit;
@@ -14,7 +14,7 @@ require_once "../../../config.php";
 
 // Define variables and initialize with empty values
 $email = $password = "";
-$emailError = $passwordError = $loginError = "";
+$emailError = $passwordError = $signInError = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -74,12 +74,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         } else {
                             // Password is not valid, display a generic error message
+
                             $loginError = "Invalid email or password.";
+
                         };
                     };
                 } else {
                     // Email doesn't exist, display a generic error message
+
                     $loginError = "Invalid email or password.";
+
                 };
             } else {
                 echo "Something went wrong. Please try again later.";
@@ -232,7 +236,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 							<section class="password">
 								<label for="password">Password</label>
 								<input type="password" name="password" id="password" class="<?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
-								<span class="invalid-entry-feedback"><?php echo $loginError,$passwordError; ?></span>
+								<span class="invalid-entry-feedback"><?php echo $signInError,$passwordError; ?></span>
 							</section>
 							<input type="submit" class="submit" value="Send">
 							<p>Don't have an account yet? <a href="../signup">Sign up here.</a></p>

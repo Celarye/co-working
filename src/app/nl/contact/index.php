@@ -30,8 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$stmt->bindParam(":AID", $paramAID, PDO::PARAM_INT);
 				$stmt->bindParam(":message", $paramMessage, PDO::PARAM_STR);
 
-				debugToConsole("here");
-				
 				// Set the parameters
 				$paramAID = $_SESSION['accountId'];
 				$paramMessage = $message;
@@ -127,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Zoeken..."
 								/>
 							</form>
 						</div>
@@ -183,8 +181,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true) {
 
 					?>
-					<section class="logged-out">
-						<p>Je moet ingelogd zijn om ons te kunnen contacteren.</p>
+					<section class="signed-out">
+						<p>U moet ingelogd zijn om ons te kunnen contacteren.</p>
 						<a href="../account/signin">Inloggen</a>
 					</section>
 					<?php
@@ -209,7 +207,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+						Verander Uw Taal
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur,

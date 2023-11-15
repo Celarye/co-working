@@ -250,7 +250,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<span class="invalid-entry-feedback"><?php echo $passwordError; ?></span>
 							</section>
 							<section class="confirmPassword">
-								<label>Confirm Password</label>
+								<label for="confirmPassword">Confirm Password</label>
 								<input type="password" name="confirmPassword" id="confirmPassword" class="<?php echo (!empty($confirmPasswordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmPassword; ?>">
 								<span class="invalid-entry-feedback"><?php echo $confirmPasswordError; ?></span>
 							</section class="submit">

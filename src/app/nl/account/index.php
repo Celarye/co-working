@@ -3,7 +3,7 @@
 // Initialize the session
 session_start();
  
-// Check if the user is logged in, if not then redirect him to login page
+// Check if the user is signed in, if not then redirect him to sign in page
 if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true){
     header("location: ./signin");
     exit;
@@ -85,7 +85,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Zoeken..."
 								/>
 							</form>
 						</div>
@@ -149,7 +149,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 							<p><?php echo htmlspecialchars($_SESSION["createdOn"]); ?></p>
 						</section>
 						<section class="disclaimer">
-							<p>Opmerking: account info bewerken wordt momenteel niet ondersteund.</p>
+							<p>Opmerking: Account info bewerken wordt momenteel niet ondersteund.</p>
 							<p>Verwijder in de plaats daarvan uw huidige account en maak een nieuwe aan.</p>
 						</section>
 						<section>
@@ -160,7 +160,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+						Verander Uw Taal
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.

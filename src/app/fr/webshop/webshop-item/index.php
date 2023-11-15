@@ -287,7 +287,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						<p class="price">&euro; <?php echo $product['price']?></p>
 						<?php
 							
-							// Check if the user is logged in
+							// Check if the user is signed in
 							if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true){
 
 						?>

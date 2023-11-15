@@ -24,7 +24,7 @@ main .info {
 }
 
 .info p.product-id {
-	color: var(--border-and-link-color);
+	color: var(--link-color);
 	font-style: italic;
 }
 
@@ -61,14 +61,14 @@ main input {
 main form .quantity {
 	color: var(--background-color-dark);
 	background: var(--text-color);
-	border: var(--border-and-link-color) solid 1px;
+	border: var(--border-shadow-color) solid 1px;
 	border-radius: 0.5em;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 main input.quantity:focus {
-	box-shadow: 0 2px 4px 0 var(--border-and-link-color),
-		0 3px 10px 0 var(--border-and-link-color);
+	box-shadow: 0 2px 4px 0 var(--border-shadow-color),
+		0 3px 10px 0 var(--border-shadow-color);
 }
 
 main form input.is-invalid {
