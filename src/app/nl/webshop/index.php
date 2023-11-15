@@ -150,7 +150,7 @@ try {
 								<section class="info">
 									<h2><?php echo $product['name'] ?></h2>
 									<p>&euro; <?php echo $product['price'] ?></p>
-									<button>Lees meer!</button>
+									<button>Lees Meer</button>
 								</section>
 								<img src="<?php echo $product['image'] ?>" alt="<?php echo $product['name'] ?>">
 							</li>
@@ -167,7 +167,8 @@ try {
 						Verander Uw Taal
 					</button>
 					<p>
-						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
+						Auteursrecht &copy; 2023 Aiko De Prez, Anureet Kaur,
+						Eduard Smet en Jesse-Jadon Latré. MIT-licentie.
 						<a href="../aboutus">Over Ons</a>
 					</p>
 				</footer>

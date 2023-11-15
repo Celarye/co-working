@@ -130,7 +130,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			type="image/png"
 			href="../../../includes/favicon.png"
 		/>
-		<title>Accidental Founds | Sign In</title>
+		<title>Accidental Founds | Sign Up</title>
 	</head>
 	<body>
 		<div class="language-selector-field language-selected">
@@ -237,7 +237,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			</header>
 			<div class="container">
 				<main>
-					<h1>Sign In</h1>
+					<h1>Sign Up</h1>
 					<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 							<section class="email">
 								<label for="email">E-mail</label>
@@ -263,7 +263,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         Change Your Language
 					</button>
 					<p>
-						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
+						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Eduard
+						Smet, and Jesse-Jadon Latré. MIT License.
 						<a href="../../aboutus">About Us</a>
 					</p>
 				</footer>

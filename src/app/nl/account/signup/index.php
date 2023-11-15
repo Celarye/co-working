@@ -255,7 +255,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<span class="invalid-entry-feedback"><?php echo $confirmPasswordError; ?></span>
 							</section class="submit">
 							<input type="submit" class="submit" value="Verzenden">
-							<p>Hebt u al een account? <a href="../signin">Meld u hier aan.</a></p>
+							<p>Hebt u al een account? <a href="../signin">Log u hier in.</a></p>
 					</form>
 				</main>
 				<footer class="fixed-footer">

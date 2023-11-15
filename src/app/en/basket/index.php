@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					$PID = $basket['PID'];
 					$sql = "DELETE FROM basketItem WHERE AID = $AID AND PID = $PID";
 					if($db->exec($sql)) {
-						$deleteFromBasketFeedback = "The item has been removed from your cart.";
+						$deleteFromBasketFeedback = "The item has been removed from your basket.";
 					};
 				};
 			} catch(PDOException $e) {
@@ -195,6 +195,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					<section class="basket">
 						<ul>
 							<?php
+
 								while ($basket = $basketQuery->fetch(PDO::FETCH_ASSOC)) {
 									try {
 										$PID = $basket['PID'];
@@ -207,7 +208,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 										exit;
 									};
 
-									while ($product = $productQuery->fetch(PDO::FETCH_ASSOC)) {								
+									while ($product = $productQuery->fetch(PDO::FETCH_ASSOC)) {	
+																
 							?>
 							<li>
 								<section>
@@ -252,7 +254,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						} else {
 
 					?>
-					<p>You have no items in your shopping cart yet.</p>
+					<p>You have no items in your basket yet.</p>
 					<?php
 
 						};
@@ -264,9 +266,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         Change Your Language
 					</button>
 					<p>
-						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur,
-						Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="./aboutus">About Us</a>
+						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Eduard
+						Smet, and Jesse-Jadon Latré. MIT License.
+						<a href="../aboutus">About Us</a>
 					</p>
 				</footer>
 			</div>

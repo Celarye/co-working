@@ -163,7 +163,8 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 						Verander Uw Taal
 					</button>
 					<p>
-						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
+						Auteursrecht &copy; 2023 Aiko De Prez, Anureet Kaur,
+						Eduard Smet en Jesse-Jadon Latré. MIT-licentie.
 						<a href="./aboutus">Over Ons</a>
 					</p>
 				</footer>

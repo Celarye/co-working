@@ -245,26 +245,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<span class="invalid-entry-feedback"><?php echo $emailError; ?></span>
 							</section>
 							<section class="password">
-								<label for="password">Mot de passe</label>
+								<label for="password">Mot De Passe</label>
 								<input type="password" name="password" id="password" class="<?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
 								<span class="invalid-entry-feedback"><?php echo $passwordError; ?></span>
 							</section>
 							<section class="confirmPassword">
-								<label for="confirmPassword">Confirmation du mot de passe</label>
+								<label for="confirmPassword">Confirmation Du Mot De Passe</label>
 								<input type="password" name="confirmPassword" id="confirmPassword" class="<?php echo (!empty($confirmPasswordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmPassword; ?>">
 								<span class="invalid-entry-feedback"><?php echo $confirmPasswordError; ?></span>
 							</section class="submit">
-							<input type="submit" class="submit" value="Verzenden">
-							<p>Avez-vous déjà un compte ? <a href="../signin">S'inscrire ici.</a></p>
+							<input type="submit" class="submit" value="Envoyer">
+							<p>Avez-vous déjà un compte? <a href="../signin">S'inscrire ici.</a></p>
 					</form>
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-                        Changer de langue
+                        Changer De Langue
 					</button>
 					<p>
-						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="../../aboutus">A propos de nous</a>
+						Droits d'auteur &copy; 2023 Aiko De Prez, Anureet Kaur, Eduard Smet et Jesse-Jadon Latré. Licence MIT.
+						<a href="../../aboutus">A Propos De Nous</a>
 					</p>
 				</footer>
 			</div>

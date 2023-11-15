@@ -61,13 +61,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 							$quantityLeft = $_POST['quantity'] - ($quantitySum - 5);
 
 							if($quantityLeft == 1) {
-								$quantityError = 'You can only add 1 more piece to your cart. Currently in your basket: 4';
+								$quantityError = 'You can only add 1 more piece to your basket. Currently in your basket: 4';
 
 							} elseif($quantityLeft > 1) {
-								$quantityError = "You can only add $quantityLeft pieces to your shopping cart. Currently in your basket: $quantityInBasket";
+								$quantityError = "You can only add $quantityLeft pieces to your basket. Currently in your basket: $quantityInBasket";
 							
 							} else {
-								$quantityError = 'Your shopping cart has reached the maximum number of pieces. Currently in your basket: 5';
+								$quantityError = 'Your basket has reached the maximum number of pieces. Currently in your basket: 5';
 							};
 						} else {
 							$sql = "UPDATE basketItem SET quantity = $quantitySum WHERE AID = $paramAID AND PID = $paramPID";
@@ -293,7 +293,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						?>
 						<section class="not-signed-in">
 							<a href="../../account/signin">Sign In</a>
-							<p>You must be logged in to add products to your shopping cart.</p>
+							<p>You must be signed in to add products to your basket.</p>
 						</section>
 						<?php
 
@@ -304,7 +304,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 							<section>
 								<label for="quantity">Amount</label>
 								<input type="number" name="quantity" class="quantity <?php echo (!empty($quantityError)) ? 'is-invalid' : ''; ?>" value="<?php echo $quantity; ?>" min="1" max="5" oninput="validity.valid||(value='');">
-								<p>Maximum 5 per customer.</p>
+								<p>Maximum of 5 per customer.</p>
 							</section>
 							<input type="submit" value="Add To Basket">
 						</form>
@@ -324,7 +324,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         Change Your Language
 					</button>
 					<p>
-						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
+						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Eduard
+						Smet, and Jesse-Jadon Latré. MIT License.
 						<a href="../../aboutus/">About Us</a>
 					</p>
 				</footer>

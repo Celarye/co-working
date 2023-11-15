@@ -164,11 +164,11 @@ try {
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-                        Changer de langue
+                        Changer De Langue
 					</button>
 					<p>
-						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="../aboutus">A propos de nous</a>
+						Droits d'auteur &copy; 2023 Aiko De Prez, Anureet Kaur, Eduard Smet et Jesse-Jadon Latré. Licence MIT.
+						<a href="../aboutus">A Propos De Nous</a>
 					</p>
 				</footer>
 			</div>

@@ -74,14 +74,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         } else {
                             // Password is not valid, display a generic error message
-
                             $loginError = "Invalid email or password.";
 
                         };
                     };
                 } else {
                     // Email doesn't exist, display a generic error message
-
                     $loginError = "Invalid email or password.";
 
                 };
@@ -247,7 +245,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         Change Your Language
 					</button>
 					<p>
-						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
+						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Eduard
+						Smet, and Jesse-Jadon Latré. MIT License.
 						<a href="./aboutus">About Us</a>
 					</p>
 				</footer>

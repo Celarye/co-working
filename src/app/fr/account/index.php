@@ -134,7 +134,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 			</header>
 			<div class="container">
 				<main>
-					<h1>Info sur le compte</h1>
+					<h1>Informations sur le compte</h1>
 					<section class="info">
 						<section>
 							<h2>ID du compte</h2>
@@ -153,18 +153,18 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 							<p>Au lieu de cela, supprimez votre compte actuel et créez-en un nouveau.</p>
 						</section>
 						<section>
-							<a href="./signout">Se déconnecter</a>
+							<a href="./signout">Se Déconnecter</a>
 							<a href="./delete" id="account-delete">Supprimer</a>
 						</section>
 					</section>
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-                        Changer de langue
+                        Changer De Langue
 					</button>
 					<p>
-						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
-						<a href="./aboutus">A propos de nous</a>
+						Droits d'auteur &copy; 2023 Aiko De Prez, Anureet Kaur, Eduard Smet et Jesse-Jadon Latré. Licence MIT.
+						<a href="./aboutus">A Propos De Nous</a>
 					</p>
 				</footer>
 			</div>

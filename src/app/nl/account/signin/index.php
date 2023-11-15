@@ -115,7 +115,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			type="image/png"
 			href="../../../includes/favicon.png"
 		/>
-		<title>Accidental Founds | Sign In</title>
+		<title>Accidental Founds | Inloggen</title>
 	</head>
 	<body>
 		<div class="language-selector-field language-selected">
@@ -222,7 +222,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			</header>
 			<div class="container">
 				<main>
-					<h1>Sign In</h1>
+					<h1>Inloggen</h1>
 					<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 							<section class="email">
 								<label for="email">E-mail</label>
@@ -235,7 +235,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<span class="invalid-entry-feedback"><?php echo $signInError,$passwordError; ?></span>
 							</section>
 							<input type="submit" class="submit" value="Verzenden">
-							<p>Hebt u nog geen account? <a href="../signup">Registreer u hier.</a></p>
+							<p>Hebt u nog geen account? <a href="../signup">Meld u hier aan.</a></p>
 					</form>
 				</main>
 				<footer class="fixed-footer">
@@ -243,7 +243,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						Verander Uw Taal
 					</button>
 					<p>
-						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
+						Auteursrecht &copy; 2023 Aiko De Prez, Anureet Kaur,
+						Eduard Smet en Jesse-Jadon Latré. MIT-licentie.
 						<a href="./aboutus">Over Ons</a>
 					</p>
 				</footer>

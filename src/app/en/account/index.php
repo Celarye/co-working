@@ -145,7 +145,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 							<p><?php echo htmlspecialchars($_SESSION["email"]); ?></p>
 						</section>
 						<section>
-							<h2>Account creation date</h2>
+							<h2>Account Creation Date</h2>
 							<p><?php echo htmlspecialchars($_SESSION["createdOn"]); ?></p>
 						</section>
 						<section class="disclaimer">
@@ -163,7 +163,8 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
                         Change Your Language
 					</button>
 					<p>
-						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
+						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Eduard
+						Smet, and Jesse-Jadon Latré. MIT License.
 						<a href="./aboutus">About Us</a>
 					</p>
 				</footer>
