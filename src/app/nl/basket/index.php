@@ -3,7 +3,7 @@
 // Initialize the session
 session_start();
  
-// Check if the user is not signed in, if no then redirect them to login page
+// Check if the user is not signed in, if no then redirect them to sign in page
 if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true) {
     header("location: ../account/signin");	
 };
@@ -137,7 +137,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Zoeken..."
 								/>
 							</form>
 						</div>
@@ -261,7 +261,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+						Verander Uw Taal
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur,

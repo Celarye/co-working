@@ -188,7 +188,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Zoeken..."
 								/>
 							</form>
 						</div>
@@ -250,17 +250,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<span class="invalid-entry-feedback"><?php echo $passwordError; ?></span>
 							</section>
 							<section class="confirmPassword">
-								<label>Wachtwoord Bevestigen</label>
+								<label for="confirmPassword">Wachtwoord Bevestigen</label>
 								<input type="password" name="confirmPassword" id="confirmPassword" class="<?php echo (!empty($confirmPasswordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmPassword; ?>">
 								<span class="invalid-entry-feedback"><?php echo $confirmPasswordError; ?></span>
 							</section class="submit">
 							<input type="submit" class="submit" value="Verzenden">
-							<p>Heb je al een account? <a href="../signin">Meld je hier aan.</a></p>
+							<p>Hebt u al een account? <a href="../signin">Meld u hier aan.</a></p>
 					</form>
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+						Verander Uw Taal
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.

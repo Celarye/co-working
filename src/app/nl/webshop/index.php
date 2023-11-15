@@ -88,7 +88,7 @@ try {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Zoeken..."
 								/>
 							</form>
 						</div>
@@ -164,7 +164,7 @@ try {
 				</main>
 				<footer class="fixed-footer">
 					<button onclick="languageReselect()">
-						Verander je taal
+						Verander Uw Taal
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.

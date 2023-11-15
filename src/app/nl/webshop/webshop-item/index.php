@@ -75,10 +75,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 							if($db->exec($sql)) {
 								// Show the success message
 								if($_POST['quantity'] > 1) {
-									$basketFeedbackPositive = "De items zijn toegevoegd aan je winkelmandje!";
+									$basketFeedbackPositive = "De items zijn toegevoegd aan uw winkelmandje!";
 
 								} else {
-									$basketFeedbackPositive = "Het item is toegevoegd aan je winkelmandje!";
+									$basketFeedbackPositive = "Het item is toegevoegd aan uw winkelmandje!";
 								};
 							} else {
 								// Show the failure message
@@ -104,10 +104,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						if($stmt->execute()) {
 							// Show the success message
 							if($_POST['quantity'] > 1) {
-								$basketFeedbackPositive = "De items zijn toegevoegd aan je winkelmandje!";
+								$basketFeedbackPositive = "De items zijn toegevoegd aan uw winkelmandje!";
 								
 							} else {
-								$basketFeedbackPositive = "Het item is toegevoegd aan je winkelmandje!";
+								$basketFeedbackPositive = "Het item is toegevoegd aan uw winkelmandje!";
 							};
 						} else {
 							// Show the failure message
@@ -210,7 +210,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 								<input
 									type="search"
 									name="id"
-									placeholder="Quick Search..."
+									placeholder="Zoeken..."
 								/>
 							</form>
 						</div>
@@ -287,13 +287,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						<p class="price">&euro; <?php echo $product['price']?></p>
 						<?php
 							
-							// Check if the user is logged in
+							// Check if the user is signed in
 							if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true){
 
 						?>
 						<section class="not-signed-in">
 							<a href="../../account/signin">Inloggen</a>
-							<p>U moet ingelogd zijn om producten aan je winkelmandje toe te voegen.</p>
+							<p>U moet ingelogd zijn om producten aan uw winkelmandje toe te kunnen voegen.</p>
 						</section>
 						<?php
 
@@ -321,7 +321,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
    				 </main>
 				<footer class="fixed-footer" id="fixed-footer-overwrite">
 					<button onclick="languageReselect()">
-						Verander je taal
+						Verander Uw Taal
 					</button>
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.

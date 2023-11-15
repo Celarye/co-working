@@ -8,7 +8,7 @@ $_SESSION = array();
 // Destroy the session.
 session_destroy();
  
-// Redirect to login page
+// Redirect to sign in page
 header("location: ../signin");
 exit;
 

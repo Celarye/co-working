@@ -24,5 +24,5 @@ A webshop for selling food which isn't widely available.
 -   Planned features:
 
     -   Google maps
-    -   Database with login support
+    -   Database with sign in support
     -   Cookies
