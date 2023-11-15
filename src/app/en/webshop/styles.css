@@ -1,7 +1,55 @@
-main {
+main > section ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2em;
+	align-items: start;
+	justify-content: center;
+}
+
+main li {
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: start;
+	width: 15em;
+	height: 24em;
+	position: relative;
+	border-radius: 0.5em;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+main li a {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	line-height: 0;
+	font-size: 0;
+	color: transparent;
+}
+
+main li .info {
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
+	gap: 1em;
+	align-items: start;
+	padding: 2em;
+}
+
+.info button {
+	background: var(--foreground-color);
+	color: var(--text-color);
+	padding: 1em 2em;
+	border: 0;
+	font-size: 0.875rem;
+	border-radius: 0.5em;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+main img {
+	width: 15em;
+	aspect-ratio: 8/5;
+	display: block;
+	object-fit: cover;
+	border-radius: 0.5em 0.5em 0 0;
 }

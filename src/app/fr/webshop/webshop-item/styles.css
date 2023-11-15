@@ -1,0 +1,145 @@
+main {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+main img {
+	width: 35vw;
+	height: 35vw;
+	aspect-ratio: 1/1;
+	display: block;
+	object-fit: cover;
+	margin-left: 2em;
+	border-radius: 1em;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+main .info {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 2em;
+	padding-left: 5em;
+}
+
+.info p.product-id {
+	color: var(--border-and-link-color);
+	font-style: italic;
+}
+
+.info p.description {
+	padding-right: 2em;
+}
+
+.info p.price {
+	font-weight: bold;
+	font-size: 2rem;
+}
+
+main form {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+main form > section {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+main input {
+	background: var(--foreground-color);
+	color: var(--text-color);
+	padding: 1em 2em;
+	border: 0;
+	font-size: 0.875rem;
+	border-radius: 0.5em;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+main form .quantity {
+	color: var(--background-color-dark);
+	background: var(--text-color);
+	border: var(--border-and-link-color) solid 1px;
+	border-radius: 0.5em;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+main input.quantity:focus {
+	box-shadow: 0 2px 4px 0 var(--border-and-link-color),
+		0 3px 10px 0 var(--border-and-link-color);
+}
+
+main form input.is-invalid {
+	border-color: var(--destroy-error-color);
+}
+
+main .basket-feedback {
+	margin-top: -1em;
+	padding-right: 2em;
+}
+
+.basket-feedback .basket-feedback-negative {
+	color: var(--destroy-error-color);
+}
+
+main .not-signed-in {
+	display: flex;
+	align-items: start;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.not-signed-in a {
+	background: var(--foreground-color);
+	color: var(--text-color);
+	padding: 1em 2em;
+	border: 0;
+	font-size: 0.875rem;
+	border-radius: 0.5em;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	text-decoration: none;
+}
+
+@media only screen and (max-width: 1085px) {
+	main {
+		flex-direction: column;
+	}
+
+	main img {
+		width: 45vw;
+		height: 45vw;
+		margin: 0 0 2.5em 0;
+	}
+
+	main .info {
+		align-items: center;
+		text-align: center;
+		padding: 0 1em;
+	}
+
+	.info p.description {
+		padding: 0;
+	}
+
+	main .basket-feedback {
+		padding: 0;
+	}
+
+	main .not-signed-in {
+		align-items: center;
+	}
+
+	#fixed-footer-overwrite {
+		position: relative;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	main img {
+		width: 60vw;
+		height: 60vw;
+		margin: 0 0 2.5em 0;
+	}
+}

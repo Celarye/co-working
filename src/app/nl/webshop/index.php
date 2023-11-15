@@ -1,43 +1,18 @@
 <?php
 
-// Show all errors
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
+// Include the config file
+require_once "../../config.php";
 
-// Database connection-settings
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'website');
-
-date_default_timezone_set('Europe/Brussels');
-
-// Console log helper function
-function debug_to_console($output) {
-    echo "<script>console.log('$output');</script>";
-}
-
-// Connect with the database
 try {
-    $db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	debug_to_console('Successfully connected to the database!');
-} catch (PDOException $e) {
-    debug_to_console('An error occurred while trying to connect to the database: ' . $e->getMessage());
-    exit;
-}
+	$sql = "SELECT * FROM product";
+	$query = $db->query($sql);
 
-$sql = "SELECT * FROM `product`";
-$result = $db->query($sql);
-?>
+} catch(PDOException $e) {
+    echo "Er is iets misgegaan. Probeer het later nog eens. Error: " . $e->getMessage();
+	exit;
+};
 
-
-
-
-
-
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="nl">
 	<head>
 		<meta charset="UTF-8" />
@@ -109,11 +84,10 @@ $result = $db->query($sql);
 									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
 								/>
 							</svg>
-							<form action="./">
+							<form action="./webshop-item/?">
 								<input
 									type="search"
-									name="search"
-									id="search"
+									name="id"
 									placeholder="Quick Search..."
 								/>
 							</form>
@@ -163,27 +137,29 @@ $result = $db->query($sql);
 			</header>
 			<div class="container">
 				<main>
-					<section class="card-placement">
-					<?php
-					       while ($row = $result->fetch(PDO::FETCH_ASSOC)){
-							$productId=$row['product-id']
-					?>
-					    
-					        <div class="card">
-					          
-					       
-					                <a href="./webshop-items/?myid=<?php echo $productId ?>">
-					                	<img src="<?php echo $row['image'] ?>"alt="<?php echo $row['name']?>">
-					                	<h2><?php echo $row['name'] ?></h2>
-								<div class="position">
-					                    		<p>&euro; <?php echo $row['price']?></p>
-									<button class="info">Lees meer!</button>
-								</div>
-					                </a>
-					        </div>
-					<?php
-						}           
-					?>
+					<h1>Webshop</h1>
+					<section>
+						<ul>
+							<?php
+
+								while ($product = $query->fetch(PDO::FETCH_ASSOC)) {
+
+							?>
+							<li>
+								<a href="./webshop-item/?id=<?php echo $product['productId'] ?>"></a>
+								<section class="info">
+									<h2><?php echo $product['name'] ?></h2>
+									<p>&euro; <?php echo $product['price'] ?></p>
+									<button>Lees meer!</button>
+								</section>
+								<img src="<?php echo $product['image'] ?>" alt="<?php echo $product['name'] ?>">
+							</li>
+							<?php
+
+								};
+							
+							?>
+						</ul>
 					</section>
 				</main>
 				<footer class="fixed-footer">
@@ -191,9 +167,8 @@ $result = $db->query($sql);
 						Verander je taal
 					</button>
 					<p>
-						Copyright &copy; 2023 All rights reserved. Aiko De Prez,
-						Anureet Kaur, Jesse-Jadon Latré and Eduard Smet.
-						<a href="./aboutus">Over Ons</a>
+						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Jesse-Jadon Latré and Eduard Smet. MIT License.
+						<a href="../aboutus">Over Ons</a>
 					</p>
 				</footer>
 			</div>

@@ -4,28 +4,28 @@
 session_start();
  
 // Check if the user is already signed in, if so then redirect them to the account page
-if(isset($_SESSION["signedIn"]) && $_SESSION["signedIn"] === true){
+if(isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true) {
     header("location: ../");
     exit;
-}
+};
 
 // Include the config file
 require_once "../../../config.php";
-
+ 
 // Define variables and initialize with empty values
 $email = $password = $confirmPassword = "";
 $emailError = $passwordError = $confirmPasswordError = "";
- 
+
 // Processing the form data when it's submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
+if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate the email
     if(empty(trim($_POST["email"]))) {
         $emailError = "Voer een geldig e-mailadres in.";
     } elseif(filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
 		// Prepare a select statement
         $sql = "SELECT email FROM account WHERE email = :email";
-        if($stmt = $db->prepare($sql)){
+
+        if($stmt = $db->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
             $stmt->bindParam(":email", $paramEmail, PDO::PARAM_STR);
             
@@ -33,20 +33,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $paramEmail = trim($_POST["email"]);
             
             // Attempt to execute the prepared statement
-            if($stmt->execute()){
-                if($stmt->rowCount() == 1){
-                    $emailError = "This email address is already taken.";
-                } else{
+            if($stmt->execute()) {
+                if($stmt->rowCount() == 1) {
+                    $emailError = "Dit email address is al in gebruik.";
+
+                } else {
                     $email = trim($_POST["email"]);
                 }
-            } else{
-				debugToConsole('Something went wrong. Please try again later.');
+            } else {
+				echo "Er is iets misgegaan. Probeer het later nog eens.";
+				exit;
             }
 
             // Close statement
             unset($stmt);
         }
-
     } else {
         $emailError = "Voer een geldig e-mailadres in.";
     }
@@ -56,16 +57,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $passwordError = "Voer een wachtwoord in.";     
     } elseif(strlen(trim($_POST["password"])) < 6) {
         $passwordError = "Het wachtwoord moet minstens 6 tekens bevatten.";
+
     } else {
         $password = trim($_POST["password"]);
     }
     
     // Validate the confirm password
     if(empty(trim($_POST["confirmPassword"]))) {
-        $confirmPasswordError = "Voer het wachtwoord opnieuw in.";     
+        $confirmPasswordError = "Voer het wachtwoord opnieuw in.";
+
     } else {
         $confirmPassword = trim($_POST["confirmPassword"]);
-        if(empty($passwordError) && ($password != $confirmPassword)){
+        if(empty($passwordError) && ($password != $confirmPassword)) {
             $confirmPasswordError = "Wachtwoorden kwamen niet overeen.";
         }
     }
@@ -88,8 +91,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if($stmt->execute()) {
                 // Redirect to the sign in page
                 header("location: ../signin");
+				exit;
+				
             } else {
-				echo "Er is iets misgegaan. Probeer het later nog eens." ;
+				echo "Er is iets misgegaan. Probeer het later nog eens.";
+				exit;
             }
 
             // Close statement
@@ -177,11 +183,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
 								/>
 							</svg>
-							<form action="../../webshop">
+							<form action="../../webshop/webshop-item/?">
 								<input
 									type="search"
-									name="search"
-									id="search"
+									name="id"
 									placeholder="Quick Search..."
 								/>
 							</form>
@@ -243,9 +248,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 								<input type="password" name="password" id="password" class="<?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
 								<span class="invalid-entry-feedback"><?php echo $passwordError; ?></span>
 							</section>
-							<section class="confirm-password">
+							<section class="confirmPassword">
 								<label>Wachtwoord Bevestigen</label>
-								<input type="password" name="confirm-password" id="confirm-password" class="<?php echo (!empty($confirmPasswordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmPassword; ?>">
+								<input type="password" name="confirmPassword" id="confirmPassword" class="<?php echo (!empty($confirmPasswordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmPassword; ?>">
 								<span class="invalid-entry-feedback"><?php echo $confirmPasswordError; ?></span>
 							</section class="submit">
 							<input type="submit" class="submit" value="Verzenden">

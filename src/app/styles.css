@@ -1,5 +1,6 @@
 :root {
 	--background-color-light: #1d2d44;
+	--border-and-link-color: #748cab;
 	--text-color: #f0ebd8;
 }
 
@@ -19,8 +20,11 @@ body {
 	min-height: 100vh;
 	width: 100vw;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
+	padding: 0em 1em;
 	margin: 0;
 	background: var(--background-color-light);
 	color: var(--text-color);
@@ -30,4 +34,9 @@ body {
 p {
 	margin: 0;
 	font-size: 1.25rem;
+	line-height: 1.5em;
+}
+
+a {
+	color: var(--border-and-link-color);
 }
