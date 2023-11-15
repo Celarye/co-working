@@ -7,7 +7,7 @@ session_start();
 if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true){
     header("location: ./signin");
     exit;
-}
+};
 
 ?><!DOCTYPE html>
 <html lang="nl">

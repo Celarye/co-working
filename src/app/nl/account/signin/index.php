@@ -7,7 +7,7 @@ session_start();
 if(isset($_SESSION["signedIn"]) && !$_SESSION["signedIn"] === true) {
     header("location: ../");
     exit;
-}
+};
 
 // Include the config file
 require_once "../../../config.php";
@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } else {
         $email = trim($_POST["email"]);
-    }
+    };
     
     // Check if password is empty
     if(empty(trim($_POST["password"]))) {
@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		
     } else {
         $password = trim($_POST["password"]);
-    }
+    };
     
     // Validate credentials
     if(empty($emailError) && empty($passwordError)) {
@@ -75,25 +75,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         } else {
                             // Password is not valid, display a generic error message
                             $loginError = "Onheldig email of password.";
-                        }
-                    }
+                        };
+                    };
                 } else {
                     // Email doesn't exist, display a generic error message
                     $loginError = "Onheldig email of password.";
-                }
+                };
             } else {
                 echo "Er is iets misgegaan. Probeer het later nog eens.";
 				exit;
-            }
-
+            };
             // Close statement
             unset($stmt);
-        }
-    }
-    
+        };
+    };
     // Close connection
     unset($db);
-}
+};
 
 ?><!DOCTYPE html>
 <html lang="nl">

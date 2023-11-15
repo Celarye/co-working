@@ -153,10 +153,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	<body>
 		<div class="language-selector-field language-selected">
 			<ul>
+				<?php
+
+					echo "<script>let productId = $productId;</script>";
+
+				?>
 				<li>
 					<button
 						id="dutch"
-						onclick="languageSelect(this.id, '../..', '/webshop')"
+						onclick="languageSelect(this.id, '../../..', `/webshop/webshop-item/?id=${productId}`)"
 					>
 						Nederlands
 					</button>
@@ -164,7 +169,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				<li>
 					<button
 						id="french"
-						onclick="languageSelect(this.id, '../..', '/webshop')"
+						onclick="languageSelect(this.id, '../../..', `/webshop/webshop-item/?id=${productId}`)"
 					>
 						Français
 					</button>
@@ -172,7 +177,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				<li>
 					<button
 						id="english"
-						onclick="languageSelect(this.id, '../..', '/webshop')"
+						onclick="languageSelect(this.id, '../../..', `/webshop/webshop-item/?id=${productId}`)"
 					>
 						English
 					</button>
@@ -254,13 +259,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			</header>
 			<div class="container">
 				<main>
+					<?php
+
+						switch($_COOKIE['preferred-language']) {
+							case 'dutch':
+								$productDescriptionLanguage = $product['descriptionDutch'];
+								break;
+							case 'french':
+								$productDescriptionLanguage = $product['descriptionFrench'];
+								break;
+							case 'english':
+								$productDescriptionLanguage = $product['descriptionEnglish'];
+								break;
+							default:
+								$productDescriptionLanguage = $product['descriptionDutch'];
+								break;
+						}
+
+					?>
 					<img src="../<?php echo $product['image']?>" alt="<?php echo $product['name']?>">
 					<div class="info">
 						<section>
 							<h2><?php echo $product['name'] ?></h2>
 							<p class="product-id">Product ID: <?php echo $product['productId']?></p>
 						</section>
-						<p class="description"><?php echo $product['description']?></p>
+						<p class="description"><?php echo $productDescriptionLanguage?></p>
 						<p class="price">&euro; <?php echo $product['price']?></p>
 						<?php
 							
