@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Validate the password
     if(empty(trim($_POST["password"]))) {
-        $passwordError = "Voer een wachtwoord in.";
+        $passwordError = "Entrez un mot de passe.";
 
     } elseif(strlen(trim($_POST["password"])) < 6) {
         $passwordError = "Le mot de passe doit contenir au moins 6 caractères.";

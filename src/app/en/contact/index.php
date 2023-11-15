@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	try {
 		// Check if the message is empty
 		if(empty(trim($_POST["message"]))) {
-			$messageError = "Voer een bericht in.";     
+			$messageError = "Enter a message.";     
 		} else {
 			$message = $_POST['message'];
 		};
