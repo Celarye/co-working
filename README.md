@@ -2,7 +2,7 @@
 
 Web development co-working project.
 
-A webshop for selling food which isn't widely available.
+A webshop for alcoholic drinks which aren't widely available.
 
 ## Website plan
 
