@@ -115,7 +115,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			type="image/png"
 			href="../../../includes/favicon.png"
 		/>
-		<title>Accidental Founds | S'inscrire</title>
+		<title>Accidental Finds | S'inscrire</title>
 	</head>
 	<body>
 		<div class="language-selector-field language-selected">
@@ -155,7 +155,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 							src="../../../includes/logo.png"
 							alt="Website logo"
 						/>
-						Accidental&nbsp;Founds</a
+						Accidental&nbsp;Finds</a
 					>
 					<section>
 						<div class="quick-search">
@@ -244,7 +244,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					</button>
 					<p>
 						Droits d'auteur &copy; 2023 Aiko De Prez, Anureet Kaur, Eduard Smet et Jesse-Jadon Latré. Licence MIT.
-						<a href="./aboutus">A Propos De Nous</a>
+						<a href="../../aboutus">A Propos De Nous</a>
 					</p>
 				</footer>
 			</div>

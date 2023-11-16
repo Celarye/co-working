@@ -130,7 +130,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			type="image/png"
 			href="../../../includes/favicon.png"
 		/>
-		<title>Accidental Founds | Aanmelden</title>
+		<title>Accidental Finds | Aanmelden</title>
 	</head>
 	<body>
 		<div class="language-selector-field language-selected">
@@ -170,7 +170,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 							src="../../../includes/logo.png"
 							alt="Website logo"
 						/>
-						Accidental&nbsp;Founds</a
+						Accidental&nbsp;Finds</a
 					>
 					<section>
 						<div class="quick-search">

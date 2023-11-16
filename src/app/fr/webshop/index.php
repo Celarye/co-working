@@ -30,7 +30,7 @@ try {
 		<link rel="stylesheet" href="../styles.css" />
 		<link rel="stylesheet" href="styles.css" />
 		<link rel="icon" type="image/png" href="../../includes/favicon.png" />
-		<title>Accidental Founds | Webshop</title>
+		<title>Accidental Finds | Webshop</title>
 	</head>
 	<body>
 		<div class="language-selector-field language-selected">
@@ -70,7 +70,7 @@ try {
 							src="../../includes/logo.png"
 							alt="Website logo"
 						/>
-						Accidental&nbsp;Founds</a
+						Accidental&nbsp;Finds</a
 					>
 					<section>
 						<div class="quick-search">

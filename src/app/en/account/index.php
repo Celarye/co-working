@@ -27,7 +27,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 		<link rel="stylesheet" href="../styles.css" />
 		<link rel="stylesheet" href="styles.css" />
 		<link rel="icon" type="image/png" href="../../includes/favicon.png" />
-		<title>Accidental Founds | Account</title>
+		<title>Accidental Finds | Account</title>
 	</head>
 	<body>
 		<div class="language-selector-field language-selected">
@@ -67,7 +67,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 							src="../../includes/logo.png"
 							alt="Website logo"
 						/>
-						Accidental&nbsp;Founds</a
+						Accidental&nbsp;Finds</a
 					>
 					<section>
 						<div class="quick-search">
@@ -165,7 +165,7 @@ if(!isset($_SESSION["signedIn"]) || isset($_SESSION["signedIn"]) && !$_SESSION["
 					<p>
 						Copyright &copy; 2023 Aiko De Prez, Anureet Kaur, Eduard
 						Smet, and Jesse-Jadon Latré. MIT License.
-						<a href="./aboutus">About Us</a>
+						<a href="../aboutus">About Us</a>
 					</p>
 				</footer>
 			</div>
