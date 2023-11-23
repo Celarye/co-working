@@ -25,3 +25,4 @@ A webshop for alcoholic drinks which aren't widely available.
 
     -   Database with login support
     -   Cookies
+    -   Multi-language support
