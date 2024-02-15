@@ -4,7 +4,7 @@ Web development co-working project.
 
 A webshop for alcoholic drinks which aren't widely available.
 
-You can check it out [here](eduardsmet.ikdoeict.be/co-working/).
+You can check it out [here](https://eduardsmet.ikdoeict.be/co-working/).
 
 ## Website plan
 
